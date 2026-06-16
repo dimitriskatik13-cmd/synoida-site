@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="el">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ομάδες Κοινωνικών Δεξιοτήτων - Σύνοιδα</title>
+  <meta name="description" content="Ομάδες κοινωνικών δεξιοτήτων στη Σύνοιδα." />
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind (vendored locally — works offline) -->
+  <script src="assets/tailwind.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            green:  '#8DC63F',
+            red:    '#ED1C24',
+            blue:   '#00AEEF',
+            orange: '#F7941D',
+            grey:   '#58595B',
+            ink:    '#58595B',  /* headings + body, per brand */
+            mist:   '#FBF7F0',  /* warm beige — alternating section bg */
+            alt:    '#F3ECDE',  /* deeper warm beige */
+          },
+          fontFamily: {
+            display: ['Comfortaa', 'system-ui', 'cursive'],
+            sans:    ['Inter', 'system-ui', 'sans-serif'],
+          },
+          boxShadow: {
+            card: '0 14px 38px -20px rgba(88,89,91,.38)',
+            soft: '0 6px 20px -12px rgba(88,89,91,.35)',
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, sans-serif; overflow-x: clip; }
+    h1,h2,h3,.font-display { font-family: 'Comfortaa', system-ui, cursive; }
+    .kicker { font-family:'Inter',sans-serif; letter-spacing:.2em; font-weight:700; text-transform:uppercase; }
+
+    /* photo banner scrim (neutral dark) */
+    .hero-scrim { background: linear-gradient(165deg, rgba(40,40,42,.82) 0%, rgba(40,40,42,.55) 45%, rgba(40,40,42,.22) 75%, rgba(40,40,42,.05) 100%); }
+
+    /* rounded photo frames (brand: generous symmetric radius) */
+    .frame { border-radius: 28px; }
+
+    /* service icon-chip cards */
+    .svc-card { transition: transform .28s cubic-bezier(.2,.7,.2,1), box-shadow .28s; }
+    .svc-card:hover, .svc-card:focus-within { transform: translateY(-6px); box-shadow: 0 26px 50px -24px rgba(88,89,91,.5); }
+    .svc-card .arrow { transition: transform .28s ease; }
+    .svc-card:hover .arrow { transform: translateX(5px); }
+
+    a:focus-visible, button:focus-visible { outline: 3px solid #00AEEF; outline-offset: 3px; border-radius: 6px; }
+
+    /* nav: grey text, green underline */
+    .nav-link { position: relative; }
+    .nav-link::after { content:''; position:absolute; left:0; bottom:-0.55rem; height:2.5px; width:0; background:#8DC63F; border-radius:9999px; transition:width .28s ease; }
+    .nav-link:hover::after, .nav-link.nav-active::after { width:100%; }
+    .nav-active { font-weight:700; }
+
+    .prose-syn p { margin-top: 1.05rem; line-height: 1.75; }
+    .prose-syn p:first-child { margin-top: 0; }
+
+    .reveal { opacity:0; transform:translateY(24px); transition:opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); }
+    .reveal.in { opacity:1; transform:none; }
+    .d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}
+
+    @media (prefers-reduced-motion: reduce){ .reveal{opacity:1;transform:none;transition:none} html{scroll-behavior:auto} }
+  </style>
+</head>
+
+<body data-page="treatments" class="font-sans text-ink bg-white antialiased">
+
+  <!-- ============ TOP UTILITY BAR ============ -->
+  <div class="bg-[#F5F5F5] border-b border-grey/10 text-[12.5px] text-grey">
+    <div class="hidden md:block">
+      <div class="max-w-6xl mx-auto px-6 lg:px-8 py-2">
+        <div class="flex items-center justify-between gap-6">
+          <ul class="grid grid-cols-2 gap-x-8 gap-y-1">
+            <li class="flex items-center gap-2"><svg class="w-3.5 h-3.5 text-green shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11a7 7 0 1 1 14 0c0 4.8-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg><span>Στρατηγού Πλαστήρα 1 &amp; Χ. Μπέκα, Σπάτα</span></li>
+            <li class="flex items-center gap-2"><svg class="w-3.5 h-3.5 text-green shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11a7 7 0 1 1 14 0c0 4.8-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg><span>7η Στάση Βραυρώνος, Αρτέμιδα</span></li>
+            <li class="flex items-center gap-2"><svg class="w-3.5 h-3.5 text-green shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11a7 7 0 1 1 14 0c0 4.8-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg><span>Αγίας Παρασκευής 8, Νέα Μάκρη</span></li>
+            <li class="flex items-center gap-2"><svg class="w-3.5 h-3.5 text-green shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11a7 7 0 1 1 14 0c0 4.8-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg><span>Σπηλαίου Πανός 10, Μαραθώνας</span></li>
+          </ul>
+          <div class="flex items-center gap-5 pl-6 border-l border-grey/15 shrink-0">
+            <ul class="grid grid-cols-2 gap-x-5 gap-y-1 font-semibold">
+              <li><a class="flex items-center gap-1.5 hover:text-blue transition" href="tel:+302106633333"><svg class="w-3.5 h-3.5 text-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z"/></svg>2106633333</a></li>
+              <li><a class="flex items-center gap-1.5 hover:text-blue transition" href="tel:+302294049981"><svg class="w-3.5 h-3.5 text-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z"/></svg>2294049981</a></li>
+              <li><a class="flex items-center gap-1.5 hover:text-blue transition" href="tel:+302294700956"><svg class="w-3.5 h-3.5 text-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z"/></svg>2294700956</a></li>
+              <li><a class="flex items-center gap-1.5 hover:text-blue transition" href="tel:+306945454203"><svg class="w-3.5 h-3.5 text-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z"/></svg>6945454203</a></li>
+            </ul>
+            <a class="flex items-center gap-1.5 font-semibold hover:text-blue transition" href="mailto:info@synoida.gr"><svg class="w-3.5 h-3.5 text-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="m3 6 9 6 9-6"/></svg>info@synoida.gr</a>
+            <a href="#" aria-label="Facebook" class="grid place-items-center w-7 h-7 rounded-full bg-blue text-white hover:bg-grey transition shrink-0"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3l.5-3H14V4.2c0-.8.3-1.4 1.5-1.4H17V.2C16.6.1 15.6 0 14.5 0 12 0 10.4 1.5 10.4 4v2H7.5v3h2.9v9H14V9Z"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="md:hidden max-w-6xl mx-auto px-4 py-2 flex items-center justify-between">
+      <a class="flex items-center gap-1.5 font-bold" href="tel:+302106633333"><svg class="w-4 h-4 text-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z"/></svg>2106633333</a>
+      <div class="flex items-center gap-3">
+        <a class="flex items-center gap-1.5 font-semibold" href="mailto:info@synoida.gr"><svg class="w-4 h-4 text-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="m3 6 9 6 9-6"/></svg><span class="sr-only">Email</span></a>
+        <a href="#" aria-label="Facebook" class="grid place-items-center w-7 h-7 rounded-full bg-blue text-white"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3l.5-3H14V4.2c0-.8.3-1.4 1.5-1.4H17V.2C16.6.1 15.6 0 14.5 0 12 0 10.4 1.5 10.4 4v2H7.5v3h2.9v9H14V9Z"/></svg></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ HEADER / NAV ============ -->
+  <header class="sticky top-0 z-50 bg-white/92 backdrop-blur-md border-b border-grey/10">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-[68px] lg:h-[78px]">
+        <a href="index.html" class="flex items-center shrink-0"><img src="assets/logo-horizontal.png" alt="Σύνοιδα" class="h-10 lg:h-12 w-auto" /></a>
+        <nav class="hidden lg:flex items-center gap-8 text-[15px] font-medium text-grey">
+          <a href="index.html" data-nav="home" class="nav-link transition">Αρχική</a>
+          <a href="about-us.html" data-nav="about" class="nav-link transition">Σχετικά με μας</a>
+          <a href="rating.html" data-nav="rating" class="nav-link transition">Αξιολόγηση</a>
+          <div class="relative group">
+            <a href="treatments.html" data-nav="treatments" class="nav-link inline-flex items-center gap-1 py-2 transition">Θεραπείες
+              <svg class="w-4 h-4 mt-0.5 transition-transform group-hover:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+            </a>
+            <div class="absolute left-1/2 -translate-x-1/2 top-full pt-3 hidden group-hover:block group-focus-within:block z-50">
+              <ul class="w-64 rounded-2xl bg-white shadow-card ring-1 ring-grey/10 p-2 text-[15px] font-medium">
+                <li><a href="treatment-speech.html" class="block rounded-xl px-3 py-2 hover:bg-green/10 hover:text-grey transition">Λογοθεραπεία</a></li>
+                <li><a href="treatment-occupational.html" class="block rounded-xl px-3 py-2 hover:bg-red/10 transition">Εργοθεραπεία</a></li>
+                <li><a href="treatment-special.html" class="block rounded-xl px-3 py-2 hover:bg-blue/10 transition">Ειδική Αγωγή</a></li>
+                <li><a href="treatment-psychotherapy.html" class="block rounded-xl px-3 py-2 hover:bg-orange/10 transition">Ψυχοθεραπεία</a></li>
+                <li><a href="treatment-consulting.html" class="block rounded-xl px-3 py-2 hover:bg-grey/10 transition">Συμβουλευτική</a></li>
+                <li><a href="treatment-play.html" class="block rounded-xl px-3 py-2 hover:bg-orange/10 transition">Παιγνιοθεραπεία</a></li>
+                <li><a href="treatment-social.html" class="block rounded-xl px-3 py-2 hover:bg-green/10 transition">Ομάδες Κοινωνικών Δεξιοτήτων</a></li>
+              </ul>
+            </div>
+          </div>
+          <a href="adult-diagnosis.html" data-nav="adult" class="nav-link transition">Διάγνωση ενηλίκων</a>
+          <a href="contact-us.html" data-nav="contact" class="inline-flex items-center gap-2 rounded-full bg-grey px-5 py-2.5 text-white font-semibold shadow-soft hover:bg-grey/90 transition">Επικοινωνία</a>
+        </nav>
+        <button id="navToggle" class="lg:hidden grid place-items-center w-11 h-11 rounded-xl text-grey hover:bg-alt transition" aria-label="Μενού" aria-expanded="false">
+          <svg id="navOpen" class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+          <svg id="navClose" class="w-7 h-7 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+        </button>
+      </div>
+    </div>
+    <nav id="mobileMenu" class="lg:hidden hidden border-t border-grey/10 bg-white">
+      <div class="max-w-6xl mx-auto px-4 py-3 flex flex-col text-[16px] font-medium text-grey">
+        <a href="index.html" data-nav="home" class="py-3 border-b border-grey/10">Αρχική</a>
+        <a href="about-us.html" data-nav="about" class="py-3 border-b border-grey/10">Σχετικά με μας</a>
+        <a href="rating.html" data-nav="rating" class="py-3 border-b border-grey/10">Αξιολόγηση</a>
+        <div class="border-b border-grey/10">
+          <button id="mTherapiesBtn" type="button" class="w-full flex items-center justify-between py-3" aria-expanded="false"><span data-nav="treatments">Θεραπείες</span>
+            <svg id="mTherapiesChevron" class="w-5 h-5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <ul id="mTherapiesSub" class="hidden flex-col pl-3 pb-2 text-[15px] text-grey/80">
+            <li><a href="treatment-speech.html" class="block py-2">Λογοθεραπεία</a></li>
+            <li><a href="treatment-occupational.html" class="block py-2">Εργοθεραπεία</a></li>
+            <li><a href="treatment-special.html" class="block py-2">Ειδική Αγωγή</a></li>
+            <li><a href="treatment-psychotherapy.html" class="block py-2">Ψυχοθεραπεία</a></li>
+            <li><a href="treatment-consulting.html" class="block py-2">Συμβουλευτική</a></li>
+            <li><a href="treatment-play.html" class="block py-2">Παιγνιοθεραπεία</a></li>
+            <li><a href="treatment-social.html" class="block py-2">Ομάδες Κοινωνικών Δεξιοτήτων</a></li>
+          </ul>
+        </div>
+        <a href="adult-diagnosis.html" data-nav="adult" class="py-3 border-b border-grey/10">Διάγνωση ενηλίκων</a>
+        <a href="contact-us.html" data-nav="contact" class="mt-3 inline-flex items-center justify-center rounded-full bg-grey px-5 py-3 text-white font-semibold">Επικοινωνία</a>
+      </div>
+    </nav>
+  </header>
+
+<main>
+  <section class="relative">
+    <div class="relative min-h-[360px] lg:min-h-[440px] flex items-end overflow-hidden">
+      <img src="assets/social-hero.jpg" alt="Παιδιά συμμετέχουν σε ομάδα κοινωνικών δεξιοτήτων στη ΣΥΝΟΙΔΑ" class="absolute inset-0 w-full h-full object-cover" />
+      <div class="absolute inset-0 hero-scrim"></div>
+      <div class="reveal relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full pb-12 pt-28">
+        <nav class="flex items-center gap-2 text-sm text-white/85 mb-4"><a href="index.html" class="hover:text-white">Αρχική</a><span>/</span><a href="treatments.html" class="hover:text-white">Θεραπείες</a><span>/</span><span class="text-white font-semibold">Ομάδες Κοινωνικών Δεξιοτήτων</span></nav>
+        <p class="kicker text-white/80 text-xs mb-3">Θεραπείες</p>
+        <h1 class="font-display font-bold text-white text-4xl sm:text-5xl lg:text-6xl leading-[1.1] max-w-3xl">Ομάδες Κοινωνικών Δεξιοτήτων</h1>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <div class="reveal relative lg:order-last">
+        <div class="absolute -inset-4 -z-10 rounded-[2.5rem] bg-green/10"></div>
+        <img src="assets/social-detail.jpg" alt="Παιδιά αλληλεπιδρούν και συνεργάζονται σε ομαδική δραστηριότητα" class="frame shadow-card w-full object-cover aspect-[4/3]" />
+      </div>
+      <div class="reveal d1">
+        <p class="kicker text-green text-xs mb-3">Ομάδες Κοινωνικών Δεξιοτήτων</p>
+        <h2 class="font-display font-bold text-ink text-3xl sm:text-4xl leading-tight">Οι ομάδες κοινωνικών δεξιοτήτων αποτελούν μία σημαντική προσέγγιση για την αντιμετώπιση <span class="text-green">θεμάτων</span></h2>
+        <div class="prose-syn mt-5 text-[16px] text-ink/85">
+          <p>που προκύπτουν τόσο σε επίπεδο συμπεριφοράς όσο και επικοινωνίας ή συναισθήματος. Μέσα από τις ομάδες ενισχύεται η κοινωνική αλληλεπίδραση και πραγματοποιούνται δραστηριότητες οι οποίες αφορούν αδρά στην εκμάθηση ή βελτίωση της λεκτικής και εξωλεκτικής επικοινωνίας, των πραγματολογικών δεξιοτήτων, των κανόνων του διαλόγου και της ανταλλαγής απόψεων, της ανάπτυξης εσωτερικών κινήτρων, της συνεργατικότητας , της θεωρίας του νου, της ενσυναίσθησης, της έκφρασης συναισθήματος ανάλογου της περίστασης, της διαχείρισης της αποτυχίας και της ματαίωσης, της ανάληψης ευθύνης</p>
+          <p>Το παιδί που εντάσσεται σε ομάδα συναναστρέφεται με συνομήλικα αγόρια και κορίτσια και δουλεύονται οι στόχοι μέσα από τη δραματοποίηση καταστάσεων καθημερινής ζωής, σενάρια, εξωτερικές δραστηριότητες, δραστηριότητες καθημερινής ζωής και ομαδικά παιχνίδια. Η συμμετοχή του στην ομάδα αποτελεί ένα σημαντικό κομμάτι της κοινωνικοποίησής του αλλά και το ίδιο προοδευτικά αποτελεί βασικό μέλος με ενεργή ανάμειξη και αποδοχή.</p>
+        </div>
+        <div class="mt-7">
+          <a href="treatments.html" class="inline-flex items-center gap-2 rounded-full bg-grey px-7 py-3.5 text-white font-semibold shadow-soft hover:bg-grey/90 transition">Οι θεραπείες μας <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 lg:py-24 bg-mist">
+    <div class="reveal max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <p class="kicker text-green text-xs mb-3">Το σπιτάκι</p>
+      <h2 class="font-display font-bold text-ink text-3xl sm:text-4xl leading-tight">Μία από τις ομάδες μας, στις οποίες εντάσσονται παιδιά με αυτισμό και νοητική <span class="text-green">υστέρηση</span></h2>
+      <div class="prose-syn mt-5 text-[16px] text-ink/85">
+        <p>τα οποία έχουν δουλευτεί επαρκώς σε ατομικό επίπεδο και χρήζουν παρέμβασης σε ομαδικό επίπεδο είναι το “σπιτάκι”. Μέσα στα 26 χρόνια λειτουργίας μας, διαπιστώσαμε ότι η προσαρμογή στις επιθυμίες του κάθε παιδιού είναι πρωταρχική ανάγκη. Αφουγκραζόμενοι την ανησυχία των γονέων για το μέλλον αλλά και τον πόθο των παιδιών για κοινωνική αλληλεπίδραση, αποφασίσαμε ότι η καταλληλότερη προσέγγιση ώστε να σταθούν αυτόνομα στις ανάγκες μιας πιθανής συγκατοίκησης ή συνύπαρξης με συνομηλίκους χωρίς την παρουσία ατόμων της οικογένειας που θα τα καθοδηγούν ή θα τα παροτρύνουν να ενεργοποιηθούν, είναι η ομαδική εκπαίδευση. Τρία δωμάτια του γραφείου μεταμορφώνονται δύο φορές την εβδομάδα σε χώρο που προσομοιάζει σε διαμέρισμα μέσα στο οποίο καλούνται 5 έως 7 παιδιά με τους αντίστοιχους θεραπευτές (λογοθεραπευτή, εργοθεραπευτή, ψυχολόγους και ειδικό παιδαγωγό) να οργανώσουν τον χρόνο τους και τις δραστηριότητες συνεργατικά, με σεβασμό στις επιθυμίες του άλλου, υπευθυνότητα και αποτελεσματικότητα. Επιλέγονται μέσα από εικόνες που προτείνονται στα παιδιά, οι αρμοδιότητες που αναλαμβάνει ο καθένας για τη συγκεκριμένη συνεδρία ώστε να επιτευχθούν οι στόχοι της ημέρας (ψώνια, μαγείρεμα, καθάρισμα, δραστηριότητες συναισθηματικής αγωγής,...) και να ακολουθήσει η ανταμοιβή δηλαδή η ευχάριστη δραστηριότητα στην οποία επιλέγει να εμπλακεί (μουσική, χορός, βόλτα στη θάλασσα, μπάσκετ, φύτεμα,...). Κάθε παιδί έχει το δικό του βιβλιαράκι με τη φωτογραφία του όπου μέσα κολλούνται με velcro οι εικόνες που έχει επιλέξει και αναπαριστούν τις δουλειές που πρέπει να εκτελέσει έως το τέλος της συνεδρίας μόνο του ή σε συνεργασία με κάποιο άλλο από τα παιδιά και οι οποίες ανατίθενται κυκλικά. Η ικανοποίηση που προκύπτει από την προσπάθεια ολοκλήρωσης της δραστηριότητας καθώς και από την επίτευξη του στόχου αποτελεί τη βάση της ενίσχυσης της αυτοεκτίμησης.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="reveal max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <p class="kicker text-green text-xs mb-3">Ενημέρωση γονέων</p>
+      <h2 class="font-display font-bold text-ink text-3xl sm:text-4xl leading-tight">Διαρκής <span class="text-green">επικοινωνία</span></h2>
+      <div class="prose-syn mt-5 text-[16px] text-ink/85">
+        <p>Οι γονείς λαμβάνουν ενημέρωση για τις εργασίες στις οποίες συμμετείχε το παιδί, τις δραστηριότητες στις οποίες ενεπλάκη καθώς και τη συμπεριφορά κατά τη διάρκεια της συνεδρίας.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="relative bg-mist overflow-hidden">
+    <div class="pointer-events-none absolute -top-20 -right-16 w-80 h-80 rounded-full bg-green/10 blur-2xl"></div>
+    <div class="pointer-events-none absolute -bottom-20 -left-16 w-80 h-80 rounded-full bg-blue/10 blur-2xl"></div>
+    <div class="reveal relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20 text-center">
+      <h2 class="font-display font-bold text-ink text-3xl sm:text-4xl leading-tight">Όταν το παιδί εξελίσσεται, <span class="text-green">ο κόσμος αλλάζει προς το καλύτερο.</span></h2>
+      <div class="mt-8"><a href="contact-us.html" class="inline-flex items-center gap-2 rounded-full bg-grey px-8 py-4 text-white text-lg font-semibold shadow-soft hover:bg-grey/90 transition">Επικοινωνία <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+    </div>
+  </section>
+</main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="bg-grey text-white/85">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div class="grid gap-12 md:grid-cols-2 lg:grid-cols-[1.2fr_1fr_1.4fr]">
+        <div>
+          <img src="assets/logo-stacked-light.png" alt="Σύνοιδα — Κέντρα Ειδικών Θεραπειών" class="h-28 w-auto" />
+          <p class="mt-5 text-white/70 leading-relaxed max-w-xs">Όταν το παιδί εξελίσσεται, ο κόσμος αλλάζει προς το καλύτερο.</p>
+          <a href="#" aria-label="Facebook" class="mt-6 inline-grid place-items-center w-10 h-10 rounded-full bg-white text-grey hover:bg-blue hover:text-white transition"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3l.5-3H14V4.2c0-.8.3-1.4 1.5-1.4H17V.2C16.6.1 15.6 0 14.5 0 12 0 10.4 1.5 10.4 4v2H7.5v3h2.9v9H14V9Z"/></svg></a>
+        </div>
+        <div>
+          <h3 class="font-display font-bold text-white text-lg mb-5">Θεραπείες</h3>
+          <ul class="space-y-3 text-white/75">
+            <li><a href="treatment-speech.html" class="hover:text-white transition">Λογοθεραπεία</a></li>
+            <li><a href="treatment-occupational.html" class="hover:text-white transition">Εργοθεραπεία</a></li>
+            <li><a href="treatment-special.html" class="hover:text-white transition">Ειδική Αγωγή</a></li>
+            <li><a href="treatment-psychotherapy.html" class="hover:text-white transition">Ψυχοθεραπεία</a></li>
+            <li><a href="treatment-consulting.html" class="hover:text-white transition">Συμβουλευτική</a></li>
+            <li><a href="treatment-play.html" class="hover:text-white transition">Παιγνιοθεραπεία</a></li>
+            <li><a href="treatment-social.html" class="hover:text-white transition">Ομάδες Κοινωνικών Δεξιοτήτων</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-display font-bold text-white text-lg mb-5">Επικοινωνία</h3>
+          <div class="grid grid-cols-[auto_1fr] gap-x-3 gap-y-4">
+            <div class="flex items-center gap-2 text-white font-semibold col-start-1"><svg class="w-5 h-5 text-green" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11a7 7 0 1 1 14 0c0 4.8-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>Τοποθεσίες</div>
+            <div class="flex items-center gap-2 text-white font-semibold"><svg class="w-5 h-5 text-green" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z"/></svg>Τηλέφωνα</div>
+            <div class="text-white/75 self-center leading-snug">Στρατηγού Πλαστήρα 1 &amp; Χ. Μπέκα, Σπάτα</div>
+            <a href="tel:+302106633333" class="text-white/75 self-center hover:text-white transition">2106633333</a>
+            <div class="text-white/75 self-center leading-snug">7η Στάση Βραυρώνος, Αρτέμιδα</div>
+            <a href="tel:+302294049981" class="text-white/75 self-center hover:text-white transition">2294049981</a>
+            <div class="text-white/75 self-center leading-snug">Αγίας Παρασκευής 8, Νέα Μάκρη</div>
+            <a href="tel:+302294700956" class="text-white/75 self-center hover:text-white transition">2294700956</a>
+            <div class="text-white/75 self-center leading-snug">Σπηλαίου Πανός 10, Μαραθώνας</div>
+            <a href="tel:+306945454203" class="text-white/75 self-center hover:text-white transition">6945454203</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="border-t border-white/15">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-2 text-sm text-white/70">
+        <p class="font-semibold tracking-wide">Αρτέμιδα · Σπάτα · Νέα Μάκρη · Μαραθώνας</p>
+        <p>info@synoida.gr · www.synoida.gr</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function(){ var page=document.body.getAttribute('data-page');
+      document.querySelectorAll('[data-nav="'+page+'"]').forEach(function(el){ el.classList.add('nav-active'); }); })();
+    var t=document.getElementById('navToggle'), m=document.getElementById('mobileMenu'),
+        o=document.getElementById('navOpen'), c=document.getElementById('navClose');
+    t.addEventListener('click',function(){ var open=m.classList.toggle('hidden')===false;
+      o.classList.toggle('hidden',open); c.classList.toggle('hidden',!open); t.setAttribute('aria-expanded',String(open)); });
+    m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){
+      m.classList.add('hidden'); o.classList.remove('hidden'); c.classList.add('hidden'); t.setAttribute('aria-expanded','false'); });});
+    var tb=document.getElementById('mTherapiesBtn'), sub=document.getElementById('mTherapiesSub'), chev=document.getElementById('mTherapiesChevron');
+    tb.addEventListener('click',function(){ var open=sub.classList.toggle('hidden')===false;
+      sub.classList.toggle('flex',open); chev.classList.toggle('rotate-180',open); tb.setAttribute('aria-expanded',String(open)); });
+    var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches; var els=document.querySelectorAll('.reveal');
+    if(reduce||!('IntersectionObserver' in window)){ els.forEach(function(e){e.classList.add('in');}); }
+    else { var io=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12,rootMargin:'0px 0px -7% 0px'});
+      els.forEach(function(e){io.observe(e);});
+      window.addEventListener('load',function(){els.forEach(function(e){if(e.getBoundingClientRect().top<window.innerHeight){e.classList.add('in');}});}); }
+  </script>
+</body>
+</html>

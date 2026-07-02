@@ -30,6 +30,7 @@ for outfile, (title, desc, page) in PAGES.items():
     if not os.path.exists(fpath):
         missing.append(outfile); continue
     main = open(fpath, encoding='utf-8').read().strip()
+    main = main.replace('<main>', '<main id="main">', 1)   # στόχος του skip link
     out = (TEMPLATE
            .replace('{{TITLE}}', title)
            .replace('{{DESC}}', desc)

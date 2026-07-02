@@ -25,6 +25,13 @@
             orange: '#F7941D',
             grey:   '#58595B',
             ink:    '#58595B',  /* headings + body, per brand */
+            /* σκούρες παραλλαγές ΜΟΝΟ για κείμενο (WCAG AA ≥4.5:1 σε λευκό & mist) —
+               τα brand hex μένουν ανέγγιχτα σε κουμπιά/εικονίδια/γεμίσματα */
+            greenDeep:  '#567A1C',
+            redDeep:    '#D9151D',
+            blueDeep:   '#0072A3',
+            orangeDeep: '#A85D00',
+            charcoal:   '#3A3B3C',  /* κείμενο πάνω σε πράσινα κουμπιά (5.5:1) */
             mist:   '#FBF7F0',  /* warm beige — alternating section bg */
             alt:    '#F3ECDE',  /* deeper warm beige */
           },
@@ -61,7 +68,8 @@
     .svc-card .arrow { transition: transform .28s ease; }
     .svc-card:hover .arrow { transform: translateX(5px); }
 
-    a:focus-visible, button:focus-visible { outline: 3px solid #00AEEF; outline-offset: 3px; border-radius: 6px; }
+    a:focus-visible, button:focus-visible { outline: 3px solid #0072A3; outline-offset: 3px; border-radius: 6px; }
+    footer a:focus-visible, .hero-scrim ~ * a:focus-visible, .hero-scrim-b ~ * a:focus-visible { outline-color: #fff; }
 
     /* nav: grey text, green underline */
     .nav-link { position: relative; }
@@ -145,7 +153,7 @@
             </div>
           </li>
           <li><a href="adult-diagnosis.html" data-nav="adult" class="nav-link transition">Διάγνωση ενηλίκων</a></li>
-          <li><a href="contact-us.html" data-nav="contact" class="inline-flex items-center gap-2 rounded-full bg-green px-5 py-2.5 text-grey font-bold shadow-soft hover:bg-[#7CB22E] transition">Επικοινωνία</a></li>
+          <li><a href="contact-us.html" data-nav="contact" class="inline-flex items-center gap-2 rounded-full bg-green px-5 py-2.5 text-charcoal font-bold shadow-soft hover:bg-[#7CB22E] transition">Επικοινωνία</a></li>
           </ul>
         </nav>
         <button id="navToggle" class="lg:hidden grid place-items-center w-11 h-11 rounded-xl text-grey hover:bg-alt transition" aria-label="Μενού" aria-expanded="false" aria-controls="mobileMenu">
@@ -163,7 +171,7 @@
           <button id="mTherapiesBtn" type="button" class="w-full flex items-center justify-between py-3" aria-expanded="false" aria-controls="mTherapiesSub"><span data-nav="treatments">Θεραπείες</span>
             <svg id="mTherapiesChevron" class="w-5 h-5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
           </button>
-          <ul id="mTherapiesSub" class="hidden flex-col pl-3 pb-2 text-[15px] text-grey/80">
+          <ul id="mTherapiesSub" class="hidden flex-col pl-3 pb-2 text-[15px] text-grey">
             <li><a href="treatment-speech.html" class="block py-2">Λογοθεραπεία</a></li>
             <li><a href="treatment-occupational.html" class="block py-2">Εργοθεραπεία</a></li>
             <li><a href="treatment-special.html" class="block py-2">Ειδική Αγωγή</a></li>
@@ -174,7 +182,7 @@
           </ul>
         </li>
         <li><a href="adult-diagnosis.html" data-nav="adult" class="block py-3 border-b border-grey/10">Διάγνωση ενηλίκων</a></li>
-        <li class="flex flex-col"><a href="contact-us.html" data-nav="contact" class="mt-3 inline-flex items-center justify-center rounded-full bg-green px-5 py-3 text-grey font-bold">Επικοινωνία</a></li>
+        <li class="flex flex-col"><a href="contact-us.html" data-nav="contact" class="mt-3 inline-flex items-center justify-center rounded-full bg-green px-5 py-3 text-charcoal font-bold">Επικοινωνία</a></li>
       </ul>
     </nav>
   </header>
@@ -199,8 +207,8 @@
         <img src="assets/psychotherapy-detail.jpg" alt="Παιδί σε θεραπευτική συνεδρία με ψυχολόγο στη ΣΥΝΟΙΔΑ" class="frame shadow-card w-full object-cover aspect-square" />
       </div>
       <div class="reveal d1">
-        <p class="kicker text-orange text-xs mb-3">Η προσέγγισή μας</p>
-        <h2 class="font-display font-bold text-ink text-3xl sm:text-4xl leading-tight">Ανάλογα με τη <span class="text-orange">διάγνωση του παιδιού</span> αλλά και με τις παρατηρούμενες συμπεριφορές</h2>
+        <p class="kicker text-orangeDeep text-xs mb-3">Η προσέγγισή μας</p>
+        <h2 class="font-display font-bold text-ink text-3xl sm:text-4xl leading-tight">Ανάλογα με τη <span class="text-orangeDeep">διάγνωση του παιδιού</span> αλλά και με τις παρατηρούμενες συμπεριφορές</h2>
         <div class="prose-syn mt-5 text-[16px] text-ink/85">
           <p>επιλέγεται η ενδεδειγμένη προσέγγιση και ο αντίστοιχα εκπαιδευμένος θεραπευτής. Σε γενικές γραμμές, η ψυχοθεραπεία αποσκοπεί στην υποστήριξη της ψυχικής υγείας και της συναισθηματικής ευημερίας των παιδιών τα οποία είναι πιθανό να παρουσιάζουν διαταραχές πανικού , ύπνου, πρόσληψης τροφής, φοβίες, άγχος επίδοσης. Επικεντρωνόμαστε στη συναισθηματική ρύθμιση, στην ανάπτυξη στρατηγικών για την αντιμετώπιση του άγχους που μαστίζει αυτή τη χρονική περίοδο παιδιά και εφήβους, στην εκμάθηση τεχνικών αυτορύθμισης, στην ανάπτυξη του αυτοελέγχου μέσα από τρία επίπεδα: της δημιουργίας κινήτρου, της αυτοαξιολόγησης της συμπεριφοράς και της χρήσης της αυτοενίσχυσης, στην ανάπτυξη της αυτοαντίληψης, στην συμμετοχή σε κοινωνικές καταστάσεις αποδεχόμενα πιθανή αποτυχία και μη εγκατάλειψη της προσπάθειας όταν δυσκολεύονται, στη συνειδητοποίηση των ικανοτήτων τους αλλά και των ορίων τους, στη βελτίωση της αλληλεπίδρασης και της συνεργασίας με συνομιλήκους και ενήλικες, στην ενίσχυση της αυτοεκτίμησής τους, στην ενίσχυση του εσωτερικού τους λόγου μέσω της λεκτικής αυτοκαθοδήγησης ώστε να μειωθούν οι παρορμητικές αντιδράσεις όταν υφίστανται.</p>
         </div>
@@ -213,8 +221,8 @@
 
   <section class="py-16 lg:py-24 bg-mist">
     <div class="reveal max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-      <p class="kicker text-orange text-xs mb-3">Άξονες εστίασης</p>
-      <h2 class="font-display font-bold text-ink text-3xl sm:text-4xl leading-tight">Oι άξονες στους οποίους εστιάζει ο <span class="text-orange">ψυχολόγος</span> ανάλογα με το αίτημα του γονέα και του παιδιού</h2>
+      <p class="kicker text-orangeDeep text-xs mb-3">Άξονες εστίασης</p>
+      <h2 class="font-display font-bold text-ink text-3xl sm:text-4xl leading-tight">Oι άξονες στους οποίους εστιάζει ο <span class="text-orangeDeep">ψυχολόγος</span> ανάλογα με το αίτημα του γονέα και του παιδιού</h2>
       <div class="prose-syn mt-5 text-[16px] text-ink/85">
         <p>Αλλά και τις ανάγκες που προκύπτουν μετά από την αξιολόγησή του είναι: Το συναίσθημα (αναγνώριση, αποδοχή, έκφραση, διαχείριση άγχους, διαχείριση Θυμού, διαχείριση φοβιών, διαχείριση πένθους, διαχείριση άγχους αποχωρισμού, διαχείριση κρίσεων πανικού, αντιμετώπιση καταθλιπτικού συναισθήματος,...) Η βελτίωση σχέσεων (γονεικών, αδελφικών, φιλικών, η διαχείριση συγκρούσεων, η διαχείριση απόρριψης, ο περιορισμός της συναισθηματικής εξάρτησης,...) Η συνειδητοποίηση των αμυντικών μηχανισμών (απώθηση, εκλογίκευση, αποφυγή, εξιδανίκευση, διανοητικοποίηση, παλινδρόμιση, εκδραμάτιση, άρνηση, προβολή, ενδοβολή,...)</p>
       </div>
@@ -233,7 +241,7 @@
     <div class="pointer-events-none absolute -top-20 -right-16 w-80 h-80 rounded-full bg-green/10 blur-2xl"></div>
     <div class="pointer-events-none absolute -bottom-20 -left-16 w-80 h-80 rounded-full bg-blue/10 blur-2xl"></div>
     <div class="reveal relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20 text-center">
-      <h2 class="font-display font-bold text-ink text-3xl sm:text-4xl leading-tight">Όταν το παιδί εξελίσσεται, <span class="text-green">ο κόσμος αλλάζει προς το καλύτερο.</span></h2>
+      <h2 class="font-display font-bold text-ink text-3xl sm:text-4xl leading-tight">Όταν το παιδί εξελίσσεται, <span class="text-greenDeep">ο κόσμος αλλάζει προς το καλύτερο.</span></h2>
       <div class="mt-8"><a href="contact-us.html" class="inline-flex items-center gap-2 rounded-full bg-grey px-8 py-4 text-white text-lg font-semibold shadow-soft hover:bg-grey/90 transition">Επικοινωνία <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
     </div>
   </section>
@@ -245,7 +253,7 @@
       <div class="grid gap-12 md:grid-cols-2 lg:grid-cols-[1.2fr_1fr_1.4fr]">
         <div>
           <img src="assets/logo-stacked-light.png" alt="Σύνοιδα — Κέντρα Ειδικών Θεραπειών" class="h-28 w-auto" />
-          <p class="mt-5 text-white/70 leading-relaxed max-w-xs">Όταν το παιδί εξελίσσεται, ο κόσμος αλλάζει προς το καλύτερο.</p>
+          <p class="mt-5 text-white/80 leading-relaxed max-w-xs">Όταν το παιδί εξελίσσεται, ο κόσμος αλλάζει προς το καλύτερο.</p>
           <a href="https://www.facebook.com/www.synoida.gr/" target="_blank" rel="noopener" aria-label="Facebook (ανοίγει σε νέα καρτέλα)" class="mt-6 inline-grid place-items-center w-10 h-10 rounded-full bg-white text-grey hover:bg-blue hover:text-white transition"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3l.5-3H14V4.2c0-.8.3-1.4 1.5-1.4H17V.2C16.6.1 15.6 0 14.5 0 12 0 10.4 1.5 10.4 4v2H7.5v3h2.9v9H14V9Z"/></svg></a>
         </div>
         <div>
@@ -278,7 +286,7 @@
       </div>
     </div>
     <div class="border-t border-white/15">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-2 text-sm text-white/70">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-2 text-sm text-white/80">
         <p class="font-semibold tracking-wide">Αρτέμιδα · Σπάτα · Νέα Μάκρη · Μαραθώνας</p>
         <p><a href="mailto:info@synoida.gr" class="hover:text-white transition">info@synoida.gr</a> · <a href="https://www.synoida.gr" target="_blank" rel="noopener" class="hover:text-white transition">www.synoida.gr</a></p>
       </div>

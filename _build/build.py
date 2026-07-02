@@ -76,6 +76,14 @@ for outfile, (title, desc, page) in PAGES.items():
 
 print('BUILT', len(built), 'pages:', ', '.join(built))
 
+# αναγέννηση στατικού CSS από τις built σελίδες
+import subprocess
+r = subprocess.run([sys.executable, os.path.join(HERE, 'gen_css.py')], capture_output=True, text=True)
+print(r.stdout.strip() or r.stderr.strip())
+if r.returncode != 0:
+    sys.exit('gen_css.py failed — το assets/site.css ΔΕΝ ανανεώθηκε')
+
+
 # έλεγχοι συνέπειας: orphan fragments / stale outputs
 orphans = sorted(set(f for f in os.listdir(FRAG) if f.endswith('.html')) - set(PAGES))
 if orphans:

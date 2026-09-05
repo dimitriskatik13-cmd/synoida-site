@@ -36,8 +36,9 @@
     h1,h2 { text-wrap: balance; }
 
     /* photo banner scrim (neutral dark) */
-    .hero-scrim { background: linear-gradient(165deg, rgba(40,40,42,.68) 0%, rgba(40,40,42,.44) 45%, rgba(40,40,42,.16) 75%, rgba(40,40,42,.03) 100%); }
-    .hero-scrim ~ div h1, .hero-scrim ~ div p { text-shadow: 0 1px 3px rgba(0,0,0,.35), 0 4px 18px rgba(0,0,0,.28); }
+    /* τοπικό σκούρο πίσω από το κείμενο (αριστερά) πάνω σε ελαφρύ καθολικό scrim — η δεξιά πλευρά της φωτο μένει φωτεινή */
+    .hero-scrim { background: linear-gradient(90deg, rgba(40,40,42,.58) 0%, rgba(40,40,42,.40) 36%, rgba(40,40,42,0) 66%), linear-gradient(165deg, rgba(40,40,42,.55) 0%, rgba(40,40,42,.32) 45%, rgba(40,40,42,.12) 75%, rgba(40,40,42,.03) 100%); }
+    .hero-scrim ~ div h1, .hero-scrim ~ div p { text-shadow: 0 1px 3px rgba(0,0,0,.45), 0 4px 22px rgba(0,0,0,.35); }
     /* bottom-weighted scrim for internal-page banners (title sits at the bottom) */
     .hero-scrim-b { background: linear-gradient(to top, rgba(40,40,42,.84) 0%, rgba(40,40,42,.52) 38%, rgba(40,40,42,.15) 70%, rgba(40,40,42,.05) 100%); }
 

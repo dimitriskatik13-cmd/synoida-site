@@ -74,14 +74,12 @@
 
     @media (prefers-reduced-motion: reduce){ .reveal{opacity:1;transform:none;transition:none} html{scroll-behavior:auto} }
 
-    /* ---- scroll progress devices (any page): --p 0..1 on [data-progress]; wipes; drawn step line; timeline ---- */
-    /* clip the children, not the observed element: a zero-width clip-path box never intersects, so the reveal would never fire */
-    .js .reveal.wipe-l, .js .reveal.wipe-r { opacity:1; transform:none; transition:none; }
-    .wipe-box { position:relative; }
-    .js .reveal.wipe-l > .wipe-box, .js .reveal.wipe-r > .wipe-box { transition: clip-path 1s cubic-bezier(.2,.7,.2,1); }
-    .js .reveal.wipe-l > .wipe-box { clip-path: inset(-1.25rem 100% -1.25rem -1.25rem); }
-    .js .reveal.wipe-r > .wipe-box { clip-path: inset(-1.25rem -1.25rem -1.25rem 100%); }
-    .js .reveal.wipe-l.in > .wipe-box, .js .reveal.wipe-r.in > .wipe-box { clip-path: inset(-1.25rem); }
+    /* ---- scroll progress devices (any page): --p 0..1 on [data-progress]; photo depth; drawn step line; timeline ---- */
+    /* photo depth: the picture sits behind its rounded frame and moves a little slower than the page (--p from data-progress) */
+    .depth-box { position:relative; isolation:isolate; }   /* keeps the -z-10 tinted backdrop inside the box */
+    .depth-clip { overflow:hidden; border-radius:28px; }
+    .depth-clip img { display:block; }
+    .js .depth-clip img { transform: scale(1.1) translate3d(0, calc((var(--p,0.5) - 0.5) * 30px), 0); will-change:transform; }
     .steps-draw { position:relative; }
     .steps-draw .step-num { position:relative; z-index:0; background:#fff; box-shadow: inset 0 0 0 2px #8DC63F; overflow:hidden; }
     .steps-draw .step-num::before { content:""; position:absolute; inset:0; background:#8DC63F; z-index:-1; opacity: clamp(0, calc((var(--p,1) - var(--at,0)) * 14), 1); }
@@ -100,7 +98,7 @@
     .tl-place { font-size:0.875rem; line-height:1.35; color:rgba(88,89,91,.85); margin-top:0.2rem; opacity: calc(0.45 + var(--on) * 0.55); }
     /* list items settle in one by one as the list scrolls up (opacity + 8px slide, driven by --p) */
     .list-draw > li { --on: clamp(0, calc((var(--p,1) - var(--at,0)) * 8), 1); opacity: calc(0.22 + var(--on) * 0.78); transform: translate3d(calc((1 - var(--on)) * -8px), 0, 0); }
-    @media (prefers-reduced-motion: reduce){ .list-draw > li { opacity:1; transform:none; } [data-progress] { --p:1 !important; } .js .reveal.wipe-l > .wipe-box, .js .reveal.wipe-r > .wipe-box { clip-path:none !important; } }
+    @media (prefers-reduced-motion: reduce){ .list-draw > li { opacity:1; transform:none; } [data-progress] { --p:1 !important; } .depth-clip img { transform:none !important; } }
     /* ---- depth & motion (homepage): hero camera move, pinned therapies rail, count-up, logo that assembles ---- */
     .hero-plane { position:absolute; inset:-10% 0; will-change:transform; transform-origin:50% 60%; }
     .hero-plane img, .hero-fg img { width:100%; height:100%; object-fit:cover; object-position:50% 45%; }

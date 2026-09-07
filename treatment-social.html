@@ -98,7 +98,9 @@
     .tl-year { color: #58595B; }
     .tl-item .t-on { color:#8DC63F; }
     .tl-place { font-size:0.875rem; line-height:1.35; color:rgba(88,89,91,.85); margin-top:0.2rem; opacity: calc(0.45 + var(--on) * 0.55); }
-    @media (prefers-reduced-motion: reduce){ [data-progress] { --p:1 !important; } .js .reveal.wipe-l > .wipe-box, .js .reveal.wipe-r > .wipe-box { clip-path:none !important; } }
+    /* list items settle in one by one as the list scrolls up (opacity + 8px slide, driven by --p) */
+    .list-draw > li { --on: clamp(0, calc((var(--p,1) - var(--at,0)) * 8), 1); opacity: calc(0.22 + var(--on) * 0.78); transform: translate3d(calc((1 - var(--on)) * -8px), 0, 0); }
+    @media (prefers-reduced-motion: reduce){ .list-draw > li { opacity:1; transform:none; } [data-progress] { --p:1 !important; } .js .reveal.wipe-l > .wipe-box, .js .reveal.wipe-r > .wipe-box { clip-path:none !important; } }
     /* ---- depth & motion (homepage): hero camera move, pinned therapies rail, count-up, logo that assembles ---- */
     .hero-plane { position:absolute; inset:-10% 0; will-change:transform; transform-origin:50% 60%; }
     .hero-plane img, .hero-fg img { width:100%; height:100%; object-fit:cover; object-position:50% 45%; }
@@ -236,9 +238,9 @@
   </header>
 
 <main id="main">
-  <section class="relative">
+  <section class="relative hero-depth">
     <div class="relative min-h-[360px] lg:min-h-[440px] flex items-end overflow-hidden">
-      <img fetchpriority="high" src="assets/social-hero.jpg" alt="Παιδιά συμμετέχουν σε ομάδα κοινωνικών δεξιοτήτων στη ΣΥΝΟΙΔΑ" class="absolute inset-0 w-full h-full object-cover" />
+      <div class="hero-plane"><img fetchpriority="high" src="assets/social-hero.jpg" alt="Παιδιά συμμετέχουν σε ομάδα κοινωνικών δεξιοτήτων στη ΣΥΝΟΙΔΑ" /></div>
       <div class="absolute inset-0 hero-scrim-b"></div>
       <div class="reveal relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full pb-12 pt-28">
         <nav aria-label="Breadcrumb" class="flex items-center gap-2 text-sm text-white/85 mb-4"><a href="index.html" class="hover:text-white">Αρχική</a><span aria-hidden="true">/</span><a href="treatments.html" class="hover:text-white">Θεραπείες</a><span aria-hidden="true">/</span><span class="text-white font-semibold" aria-current="page">Ομάδες Κοινωνικών Δεξιοτήτων</span></nav>
@@ -250,10 +252,12 @@
 
   <section class="py-16 lg:py-24 bg-white">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-[1fr_1.4fr] gap-12 lg:gap-16 items-center">
-      <div class="reveal relative lg:order-last">
+      <div class="reveal wipe-r relative lg:order-last">
+        <div class="wipe-box">
         <div class="absolute -inset-4 -z-10 rounded-[2.5rem] bg-green/10"></div>
         <img loading="lazy" decoding="async" src="assets/social-detail.jpg" alt="Παιδιά αλληλεπιδρούν και συνεργάζονται σε ομαδική δραστηριότητα" class="frame shadow-card w-full object-cover aspect-square" />
-      </div>
+      
+        </div></div>
       <div class="reveal d1">
         <p class="kicker text-green text-xs mb-3">Η προσέγγισή μας</p>
         <h2 class="font-display font-bold text-ink text-3xl sm:text-4xl leading-tight">Οι ομάδες κοινωνικών δεξιοτήτων αντιμετωπίζουν θέματα <span class="text-green">συμπεριφοράς, επικοινωνίας και συναισθήματος.</span></h2>
@@ -272,13 +276,13 @@
     <div class="reveal max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
       <p class="kicker text-green text-xs mb-3">Για τους γονείς</p>
       <h2 class="font-display font-bold text-ink text-3xl sm:text-4xl leading-tight">Πότε βοηθά η ένταξη σε <span class="text-green">ομάδα;</span></h2>
-      <ul class="mt-6 space-y-3">
-        <li class="flex items-start gap-3 text-ink/85"><svg class="w-5 h-5 shrink-0 mt-0.5 text-green" viewBox="0 0 24 24" fill="currentColor"><path d="M20.285 6.708a1 1 0 0 0-1.414-1.416l-9.19 9.19-4.552-4.55a1 1 0 0 0-1.414 1.414l5.26 5.258a1 1 0 0 0 1.414 0z"/></svg><span>Δυσκολεύεται να κάνει ή να κρατήσει φιλίες.</span></li>
-        <li class="flex items-start gap-3 text-ink/85"><svg class="w-5 h-5 shrink-0 mt-0.5 text-green" viewBox="0 0 24 24" fill="currentColor"><path d="M20.285 6.708a1 1 0 0 0-1.414-1.416l-9.19 9.19-4.552-4.55a1 1 0 0 0-1.414 1.414l5.26 5.258a1 1 0 0 0 1.414 0z"/></svg><span>Θέλει να παίξει με άλλα παιδιά, αλλά δεν ξέρει πώς να μπει στην παρέα.</span></li>
-        <li class="flex items-start gap-3 text-ink/85"><svg class="w-5 h-5 shrink-0 mt-0.5 text-green" viewBox="0 0 24 24" fill="currentColor"><path d="M20.285 6.708a1 1 0 0 0-1.414-1.416l-9.19 9.19-4.552-4.55a1 1 0 0 0-1.414 1.414l5.26 5.258a1 1 0 0 0 1.414 0z"/></svg><span>Δεν «διαβάζει» εύκολα τα κοινωνικά σήματα: χιούμορ, εκφράσεις, κανόνες του παιχνιδιού.</span></li>
-        <li class="flex items-start gap-3 text-ink/85"><svg class="w-5 h-5 shrink-0 mt-0.5 text-green" viewBox="0 0 24 24" fill="currentColor"><path d="M20.285 6.708a1 1 0 0 0-1.414-1.416l-9.19 9.19-4.552-4.55a1 1 0 0 0-1.414 1.414l5.26 5.258a1 1 0 0 0 1.414 0z"/></svg><span>Δυσκολεύεται με την αναμονή, τη σειρά του και την ήττα.</span></li>
-        <li class="flex items-start gap-3 text-ink/85"><svg class="w-5 h-5 shrink-0 mt-0.5 text-green" viewBox="0 0 24 24" fill="currentColor"><path d="M20.285 6.708a1 1 0 0 0-1.414-1.416l-9.19 9.19-4.552-4.55a1 1 0 0 0-1.414 1.414l5.26 5.258a1 1 0 0 0 1.414 0z"/></svg><span>Μένει μόνο του στο διάλειμμα ή αποφεύγει ομαδικές δραστηριότητες.</span></li>
-        <li class="flex items-start gap-3 text-ink/85"><svg class="w-5 h-5 shrink-0 mt-0.5 text-green" viewBox="0 0 24 24" fill="currentColor"><path d="M20.285 6.708a1 1 0 0 0-1.414-1.416l-9.19 9.19-4.552-4.55a1 1 0 0 0-1.414 1.414l5.26 5.258a1 1 0 0 0 1.414 0z"/></svg><span>Έχει κατακτήσει στόχους σε ατομικό επίπεδο και είναι έτοιμο για το επόμενο βήμα.</span></li>
+      <ul class="mt-6 space-y-3 list-draw" data-progress="0.88 0.6">
+        <li data-at class="flex items-start gap-3 text-ink/85"><svg class="w-5 h-5 shrink-0 mt-0.5 text-green" viewBox="0 0 24 24" fill="currentColor"><path d="M20.285 6.708a1 1 0 0 0-1.414-1.416l-9.19 9.19-4.552-4.55a1 1 0 0 0-1.414 1.414l5.26 5.258a1 1 0 0 0 1.414 0z"/></svg><span>Δυσκολεύεται να κάνει ή να κρατήσει φιλίες.</span></li>
+        <li data-at class="flex items-start gap-3 text-ink/85"><svg class="w-5 h-5 shrink-0 mt-0.5 text-green" viewBox="0 0 24 24" fill="currentColor"><path d="M20.285 6.708a1 1 0 0 0-1.414-1.416l-9.19 9.19-4.552-4.55a1 1 0 0 0-1.414 1.414l5.26 5.258a1 1 0 0 0 1.414 0z"/></svg><span>Θέλει να παίξει με άλλα παιδιά, αλλά δεν ξέρει πώς να μπει στην παρέα.</span></li>
+        <li data-at class="flex items-start gap-3 text-ink/85"><svg class="w-5 h-5 shrink-0 mt-0.5 text-green" viewBox="0 0 24 24" fill="currentColor"><path d="M20.285 6.708a1 1 0 0 0-1.414-1.416l-9.19 9.19-4.552-4.55a1 1 0 0 0-1.414 1.414l5.26 5.258a1 1 0 0 0 1.414 0z"/></svg><span>Δεν «διαβάζει» εύκολα τα κοινωνικά σήματα: χιούμορ, εκφράσεις, κανόνες του παιχνιδιού.</span></li>
+        <li data-at class="flex items-start gap-3 text-ink/85"><svg class="w-5 h-5 shrink-0 mt-0.5 text-green" viewBox="0 0 24 24" fill="currentColor"><path d="M20.285 6.708a1 1 0 0 0-1.414-1.416l-9.19 9.19-4.552-4.55a1 1 0 0 0-1.414 1.414l5.26 5.258a1 1 0 0 0 1.414 0z"/></svg><span>Δυσκολεύεται με την αναμονή, τη σειρά του και την ήττα.</span></li>
+        <li data-at class="flex items-start gap-3 text-ink/85"><svg class="w-5 h-5 shrink-0 mt-0.5 text-green" viewBox="0 0 24 24" fill="currentColor"><path d="M20.285 6.708a1 1 0 0 0-1.414-1.416l-9.19 9.19-4.552-4.55a1 1 0 0 0-1.414 1.414l5.26 5.258a1 1 0 0 0 1.414 0z"/></svg><span>Μένει μόνο του στο διάλειμμα ή αποφεύγει ομαδικές δραστηριότητες.</span></li>
+        <li data-at class="flex items-start gap-3 text-ink/85"><svg class="w-5 h-5 shrink-0 mt-0.5 text-green" viewBox="0 0 24 24" fill="currentColor"><path d="M20.285 6.708a1 1 0 0 0-1.414-1.416l-9.19 9.19-4.552-4.55a1 1 0 0 0-1.414 1.414l5.26 5.258a1 1 0 0 0 1.414 0z"/></svg><span>Έχει κατακτήσει στόχους σε ατομικό επίπεδο και είναι έτοιμο για το επόμενο βήμα.</span></li>
       </ul>
       <p class="mt-6 text-ink/85">Κάθε παιδί αναπτύσσεται με τον δικό του ρυθμό. Αν αναγνωρίζετε κάποια από τα παραπάνω, μια αξιολόγηση μπορεί είτε να σας καθησυχάσει είτε να δώσει έγκαιρη κατεύθυνση.</p>
     </div>
@@ -288,17 +292,17 @@
     <div class="reveal max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
       <p class="kicker text-green text-xs mb-3">Οι στόχοι της ομάδας</p>
       <h2 class="font-display font-bold text-ink text-3xl sm:text-4xl leading-tight">Τι δουλεύουμε <span class="text-green">στην ομάδα</span></h2>
-      <ul class="mt-6 grid sm:grid-cols-2 gap-x-8 gap-y-4 text-[16px] leading-[1.75] text-ink/85">
-        <li class="flex items-start gap-3"><span class="mt-[10px] w-2 h-2 rounded-full bg-green shrink-0"></span><span>Λεκτική και εξωλεκτική επικοινωνία.</span></li>
-        <li class="flex items-start gap-3"><span class="mt-[10px] w-2 h-2 rounded-full bg-green shrink-0"></span><span>Πραγματολογικές δεξιότητες.</span></li>
-        <li class="flex items-start gap-3"><span class="mt-[10px] w-2 h-2 rounded-full bg-green shrink-0"></span><span>Κανόνες διαλόγου και ανταλλαγή απόψεων.</span></li>
-        <li class="flex items-start gap-3"><span class="mt-[10px] w-2 h-2 rounded-full bg-green shrink-0"></span><span>Ανάπτυξη εσωτερικών κινήτρων.</span></li>
-        <li class="flex items-start gap-3"><span class="mt-[10px] w-2 h-2 rounded-full bg-green shrink-0"></span><span>Συνεργατικότητα.</span></li>
-        <li class="flex items-start gap-3"><span class="mt-[10px] w-2 h-2 rounded-full bg-green shrink-0"></span><span>Θεωρία του νου.</span></li>
-        <li class="flex items-start gap-3"><span class="mt-[10px] w-2 h-2 rounded-full bg-green shrink-0"></span><span>Ενσυναίσθηση.</span></li>
-        <li class="flex items-start gap-3"><span class="mt-[10px] w-2 h-2 rounded-full bg-green shrink-0"></span><span>Έκφραση συναισθήματος ανάλογη της περίστασης.</span></li>
-        <li class="flex items-start gap-3"><span class="mt-[10px] w-2 h-2 rounded-full bg-green shrink-0"></span><span>Διαχείριση της αποτυχίας και της ματαίωσης.</span></li>
-        <li class="flex items-start gap-3"><span class="mt-[10px] w-2 h-2 rounded-full bg-green shrink-0"></span><span>Ανάληψη ευθύνης.</span></li>
+      <ul class="mt-6 grid sm:grid-cols-2 gap-x-8 gap-y-4 text-[16px] leading-[1.75] text-ink/85 list-draw" data-progress="0.88 0.6">
+        <li data-at class="flex items-start gap-3"><span class="mt-[10px] w-2 h-2 rounded-full bg-green shrink-0"></span><span>Λεκτική και εξωλεκτική επικοινωνία.</span></li>
+        <li data-at class="flex items-start gap-3"><span class="mt-[10px] w-2 h-2 rounded-full bg-green shrink-0"></span><span>Πραγματολογικές δεξιότητες.</span></li>
+        <li data-at class="flex items-start gap-3"><span class="mt-[10px] w-2 h-2 rounded-full bg-green shrink-0"></span><span>Κανόνες διαλόγου και ανταλλαγή απόψεων.</span></li>
+        <li data-at class="flex items-start gap-3"><span class="mt-[10px] w-2 h-2 rounded-full bg-green shrink-0"></span><span>Ανάπτυξη εσωτερικών κινήτρων.</span></li>
+        <li data-at class="flex items-start gap-3"><span class="mt-[10px] w-2 h-2 rounded-full bg-green shrink-0"></span><span>Συνεργατικότητα.</span></li>
+        <li data-at class="flex items-start gap-3"><span class="mt-[10px] w-2 h-2 rounded-full bg-green shrink-0"></span><span>Θεωρία του νου.</span></li>
+        <li data-at class="flex items-start gap-3"><span class="mt-[10px] w-2 h-2 rounded-full bg-green shrink-0"></span><span>Ενσυναίσθηση.</span></li>
+        <li data-at class="flex items-start gap-3"><span class="mt-[10px] w-2 h-2 rounded-full bg-green shrink-0"></span><span>Έκφραση συναισθήματος ανάλογη της περίστασης.</span></li>
+        <li data-at class="flex items-start gap-3"><span class="mt-[10px] w-2 h-2 rounded-full bg-green shrink-0"></span><span>Διαχείριση της αποτυχίας και της ματαίωσης.</span></li>
+        <li data-at class="flex items-start gap-3"><span class="mt-[10px] w-2 h-2 rounded-full bg-green shrink-0"></span><span>Ανάληψη ευθύνης.</span></li>
       </ul>
     </div>
   </section>

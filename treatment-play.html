@@ -98,7 +98,9 @@
     .tl-year { color: #58595B; }
     .tl-item .t-on { color:#8DC63F; }
     .tl-place { font-size:0.875rem; line-height:1.35; color:rgba(88,89,91,.85); margin-top:0.2rem; opacity: calc(0.45 + var(--on) * 0.55); }
-    @media (prefers-reduced-motion: reduce){ [data-progress] { --p:1 !important; } .js .reveal.wipe-l > .wipe-box, .js .reveal.wipe-r > .wipe-box { clip-path:none !important; } }
+    /* list items settle in one by one as the list scrolls up (opacity + 8px slide, driven by --p) */
+    .list-draw > li { --on: clamp(0, calc((var(--p,1) - var(--at,0)) * 8), 1); opacity: calc(0.22 + var(--on) * 0.78); transform: translate3d(calc((1 - var(--on)) * -8px), 0, 0); }
+    @media (prefers-reduced-motion: reduce){ .list-draw > li { opacity:1; transform:none; } [data-progress] { --p:1 !important; } .js .reveal.wipe-l > .wipe-box, .js .reveal.wipe-r > .wipe-box { clip-path:none !important; } }
     /* ---- depth & motion (homepage): hero camera move, pinned therapies rail, count-up, logo that assembles ---- */
     .hero-plane { position:absolute; inset:-10% 0; will-change:transform; transform-origin:50% 60%; }
     .hero-plane img, .hero-fg img { width:100%; height:100%; object-fit:cover; object-position:50% 45%; }
@@ -236,9 +238,9 @@
   </header>
 
 <main id="main">
-  <section class="relative">
+  <section class="relative hero-depth">
     <div class="relative min-h-[360px] lg:min-h-[440px] flex items-end overflow-hidden">
-      <img fetchpriority="high" src="assets/play-hero.jpg" alt="Παιδί παίζει σε ασφαλές θεραπευτικό περιβάλλον παιγνιοθεραπείας" class="absolute inset-0 w-full h-full object-cover" />
+      <div class="hero-plane"><img fetchpriority="high" src="assets/play-hero.jpg" alt="Παιδί παίζει σε ασφαλές θεραπευτικό περιβάλλον παιγνιοθεραπείας" /></div>
       <div class="absolute inset-0 hero-scrim-b"></div>
       <div class="reveal relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full pb-12 pt-28">
         <nav aria-label="Breadcrumb" class="flex items-center gap-2 text-sm text-white/85 mb-4"><a href="index.html" class="hover:text-white">Αρχική</a><span aria-hidden="true">/</span><a href="treatments.html" class="hover:text-white">Θεραπείες</a><span aria-hidden="true">/</span><span class="text-white font-semibold" aria-current="page">Παιγνιοθεραπεία</span></nav>
@@ -250,10 +252,12 @@
 
   <section class="py-16 lg:py-24 bg-white">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-[1fr_1.4fr] gap-12 lg:gap-16 items-center">
-      <div class="reveal relative lg:order-last">
+      <div class="reveal wipe-r relative lg:order-last">
+        <div class="wipe-box">
         <div class="absolute -inset-4 -z-10 rounded-[2.5rem] bg-orange/10"></div>
         <img loading="lazy" decoding="async" src="assets/play-room.jpg" alt="Χώρος παιγνιοθεραπείας στη ΣΥΝΟΙΔΑ" class="frame shadow-card w-full object-cover aspect-square" />
-      </div>
+      
+        </div></div>
       <div class="reveal d1">
         <p class="kicker text-orange text-xs mb-3">Η προσέγγισή μας</p>
         <h2 class="font-display font-bold text-ink text-3xl sm:text-4xl leading-tight">Η Παιγνιοθεραπεία: μία εξειδικευμένη <span class="text-orange">θεραπευτική προσέγγιση.</span></h2>
@@ -272,13 +276,13 @@
     <div class="reveal max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
       <p class="kicker text-orange text-xs mb-3">Για τους γονείς</p>
       <h2 class="font-display font-bold text-ink text-3xl sm:text-4xl leading-tight">Σε ποιες περιπτώσεις <span class="text-orange">βοηθά;</span></h2>
-      <ul class="mt-6 space-y-3">
-        <li class="flex items-start gap-3 text-ink/85"><svg class="w-5 h-5 shrink-0 mt-0.5 text-orange" viewBox="0 0 24 24" fill="currentColor"><path d="M20.285 6.708a1 1 0 0 0-1.414-1.416l-9.19 9.19-4.552-4.55a1 1 0 0 0-1.414 1.414l5.26 5.258a1 1 0 0 0 1.414 0z"/></svg><span>Διαταραχή Ελλειμματικής Προσοχής, με ή χωρίς Υπερκινητικότητα.</span></li>
-        <li class="flex items-start gap-3 text-ink/85"><svg class="w-5 h-5 shrink-0 mt-0.5 text-orange" viewBox="0 0 24 24" fill="currentColor"><path d="M20.285 6.708a1 1 0 0 0-1.414-1.416l-9.19 9.19-4.552-4.55a1 1 0 0 0-1.414 1.414l5.26 5.258a1 1 0 0 0 1.414 0z"/></svg><span>Δυσκολίες διαχείρισης θυμού.</span></li>
-        <li class="flex items-start gap-3 text-ink/85"><svg class="w-5 h-5 shrink-0 mt-0.5 text-orange" viewBox="0 0 24 24" fill="currentColor"><path d="M20.285 6.708a1 1 0 0 0-1.414-1.416l-9.19 9.19-4.552-4.55a1 1 0 0 0-1.414 1.414l5.26 5.258a1 1 0 0 0 1.414 0z"/></svg><span>Θέματα συναισθηματικού δεσμού.</span></li>
-        <li class="flex items-start gap-3 text-ink/85"><svg class="w-5 h-5 shrink-0 mt-0.5 text-orange" viewBox="0 0 24 24" fill="currentColor"><path d="M20.285 6.708a1 1 0 0 0-1.414-1.416l-9.19 9.19-4.552-4.55a1 1 0 0 0-1.414 1.414l5.26 5.258a1 1 0 0 0 1.414 0z"/></svg><span>Προβλήματα συμπεριφοράς.</span></li>
-        <li class="flex items-start gap-3 text-ink/85"><svg class="w-5 h-5 shrink-0 mt-0.5 text-orange" viewBox="0 0 24 24" fill="currentColor"><path d="M20.285 6.708a1 1 0 0 0-1.414-1.416l-9.19 9.19-4.552-4.55a1 1 0 0 0-1.414 1.414l5.26 5.258a1 1 0 0 0 1.414 0z"/></svg><span>Καταστάσεις σχολικού εκφοβισμού.</span></li>
-        <li class="flex items-start gap-3 text-ink/85"><svg class="w-5 h-5 shrink-0 mt-0.5 text-orange" viewBox="0 0 24 24" fill="currentColor"><path d="M20.285 6.708a1 1 0 0 0-1.414-1.416l-9.19 9.19-4.552-4.55a1 1 0 0 0-1.414 1.414l5.26 5.258a1 1 0 0 0 1.414 0z"/></svg><span>Πένθος και απώλεια.</span></li>
+      <ul class="mt-6 space-y-3 list-draw" data-progress="0.88 0.6">
+        <li data-at class="flex items-start gap-3 text-ink/85"><svg class="w-5 h-5 shrink-0 mt-0.5 text-orange" viewBox="0 0 24 24" fill="currentColor"><path d="M20.285 6.708a1 1 0 0 0-1.414-1.416l-9.19 9.19-4.552-4.55a1 1 0 0 0-1.414 1.414l5.26 5.258a1 1 0 0 0 1.414 0z"/></svg><span>Διαταραχή Ελλειμματικής Προσοχής, με ή χωρίς Υπερκινητικότητα.</span></li>
+        <li data-at class="flex items-start gap-3 text-ink/85"><svg class="w-5 h-5 shrink-0 mt-0.5 text-orange" viewBox="0 0 24 24" fill="currentColor"><path d="M20.285 6.708a1 1 0 0 0-1.414-1.416l-9.19 9.19-4.552-4.55a1 1 0 0 0-1.414 1.414l5.26 5.258a1 1 0 0 0 1.414 0z"/></svg><span>Δυσκολίες διαχείρισης θυμού.</span></li>
+        <li data-at class="flex items-start gap-3 text-ink/85"><svg class="w-5 h-5 shrink-0 mt-0.5 text-orange" viewBox="0 0 24 24" fill="currentColor"><path d="M20.285 6.708a1 1 0 0 0-1.414-1.416l-9.19 9.19-4.552-4.55a1 1 0 0 0-1.414 1.414l5.26 5.258a1 1 0 0 0 1.414 0z"/></svg><span>Θέματα συναισθηματικού δεσμού.</span></li>
+        <li data-at class="flex items-start gap-3 text-ink/85"><svg class="w-5 h-5 shrink-0 mt-0.5 text-orange" viewBox="0 0 24 24" fill="currentColor"><path d="M20.285 6.708a1 1 0 0 0-1.414-1.416l-9.19 9.19-4.552-4.55a1 1 0 0 0-1.414 1.414l5.26 5.258a1 1 0 0 0 1.414 0z"/></svg><span>Προβλήματα συμπεριφοράς.</span></li>
+        <li data-at class="flex items-start gap-3 text-ink/85"><svg class="w-5 h-5 shrink-0 mt-0.5 text-orange" viewBox="0 0 24 24" fill="currentColor"><path d="M20.285 6.708a1 1 0 0 0-1.414-1.416l-9.19 9.19-4.552-4.55a1 1 0 0 0-1.414 1.414l5.26 5.258a1 1 0 0 0 1.414 0z"/></svg><span>Καταστάσεις σχολικού εκφοβισμού.</span></li>
+        <li data-at class="flex items-start gap-3 text-ink/85"><svg class="w-5 h-5 shrink-0 mt-0.5 text-orange" viewBox="0 0 24 24" fill="currentColor"><path d="M20.285 6.708a1 1 0 0 0-1.414-1.416l-9.19 9.19-4.552-4.55a1 1 0 0 0-1.414 1.414l5.26 5.258a1 1 0 0 0 1.414 0z"/></svg><span>Πένθος και απώλεια.</span></li>
       </ul>
     </div>
   </section>
@@ -287,12 +291,12 @@
     <div class="reveal max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
       <p class="kicker text-orange text-xs mb-3">Πολλαπλά οφέλη</p>
       <h2 class="font-display font-bold text-ink text-3xl sm:text-4xl leading-tight">Η Παιγνιοθεραπεία παρέχει πολλαπλά <span class="text-orange">οφέλη στα παιδιά</span></h2>
-      <ul class="mt-6 space-y-4 text-[16px] leading-[1.75] text-ink/85">
-        <li class="flex items-start gap-3"><span class="mt-[10px] w-2 h-2 rounded-full bg-orange shrink-0"></span><span>Βελτίωση της συναισθηματικής ρύθμισης.</span></li>
-        <li class="flex items-start gap-3"><span class="mt-[10px] w-2 h-2 rounded-full bg-orange shrink-0"></span><span>Ενίσχυση της αυτοεκτίμησης και της αυτοπεποίθησης.</span></li>
-        <li class="flex items-start gap-3"><span class="mt-[10px] w-2 h-2 rounded-full bg-orange shrink-0"></span><span>Ανάπτυξη κοινωνικών δεξιοτήτων.</span></li>
-        <li class="flex items-start gap-3"><span class="mt-[10px] w-2 h-2 rounded-full bg-orange shrink-0"></span><span>Επεξεργασία δύσκολων και τραυματικών εμπειριών.</span></li>
-        <li class="flex items-start gap-3"><span class="mt-[10px] w-2 h-2 rounded-full bg-orange shrink-0"></span><span>Βελτίωση της συμπεριφοράς και της σχολικής λειτουργικότητας.</span></li>
+      <ul class="mt-6 space-y-4 text-[16px] leading-[1.75] text-ink/85 list-draw" data-progress="0.88 0.6">
+        <li data-at class="flex items-start gap-3"><span class="mt-[10px] w-2 h-2 rounded-full bg-orange shrink-0"></span><span>Βελτίωση της συναισθηματικής ρύθμισης.</span></li>
+        <li data-at class="flex items-start gap-3"><span class="mt-[10px] w-2 h-2 rounded-full bg-orange shrink-0"></span><span>Ενίσχυση της αυτοεκτίμησης και της αυτοπεποίθησης.</span></li>
+        <li data-at class="flex items-start gap-3"><span class="mt-[10px] w-2 h-2 rounded-full bg-orange shrink-0"></span><span>Ανάπτυξη κοινωνικών δεξιοτήτων.</span></li>
+        <li data-at class="flex items-start gap-3"><span class="mt-[10px] w-2 h-2 rounded-full bg-orange shrink-0"></span><span>Επεξεργασία δύσκολων και τραυματικών εμπειριών.</span></li>
+        <li data-at class="flex items-start gap-3"><span class="mt-[10px] w-2 h-2 rounded-full bg-orange shrink-0"></span><span>Βελτίωση της συμπεριφοράς και της σχολικής λειτουργικότητας.</span></li>
       </ul>
       <p class="mt-6 text-ink/85">Οι γονείς διαπιστώνουν και αναφέρουν βελτίωση στη συναισθηματική κατάσταση και τη γενική ευεξία των παιδιών.</p>
     </div>

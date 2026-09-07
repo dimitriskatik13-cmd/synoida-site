@@ -346,7 +346,7 @@
             if(fg) fg.style.transform='translate3d(0,'+(-p*h*0.06).toFixed(1)+'px,0)'; }
           else if(plane) plane.style.transform='translate3d(0,'+(p*h*0.24).toFixed(1)+'px,0) scale('+(1+p*0.12).toFixed(4)+')'; }
         if(railOn()&&over>0){ var t=Math.min(Math.max((y-pinStart)/over,0),1); rail.style.transform='translate3d('+(-t*over).toFixed(1)+'px,0,0)'; }
-        if(cta&&!reduce){ var cr=cta.getBoundingClientRect(), k=Math.min(Math.max((cr.top-vh*0.16)/(vh*0.74),0),1); cta.style.setProperty('--k',k.toFixed(3)); }
+        if(cta&&!reduce){ var cr=cta.getBoundingClientRect(), k=Math.min(Math.max((cr.top-vh*0.45)/(vh*0.5),0),1); cta.style.setProperty('--k',k.toFixed(3)); }
         if(!reduce) for(var i=0;i<progs.length;i++){ var el=progs[i], rr=el.getBoundingClientRect(), sp=(el.getAttribute('data-progress')||'').split(/\s+/),
           S=parseFloat(sp[0]); if(isNaN(S)) S=0.85; var E=parseFloat(sp[1]); if(isNaN(E)) E=0.6;
           var pp=Math.min(Math.max((vh*S-rr.top)/(vh*(S-E)+rr.height),0),1); el.style.setProperty('--p',pp.toFixed(3)); }

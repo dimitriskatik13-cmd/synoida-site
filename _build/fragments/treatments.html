@@ -1,7 +1,7 @@
 <main>
-  <section class="relative">
+  <section class="relative hero-depth">
     <div class="relative min-h-[360px] lg:min-h-[440px] flex items-end overflow-hidden">
-      <img fetchpriority="high" src="assets/treatments-hero.jpg" alt="Παιδί σε εξειδικευμένη θεραπευτική συνεδρία στη ΣΥΝΟΙΔΑ" class="absolute inset-0 w-full h-full object-cover" />
+      <div class="hero-plane"><img fetchpriority="high" src="assets/treatments-hero.jpg" alt="Παιδί σε εξειδικευμένη θεραπευτική συνεδρία στη ΣΥΝΟΙΔΑ" /></div>
       <div class="absolute inset-0 hero-scrim-b"></div>
       <div class="reveal relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full pb-12 pt-28">
         <nav aria-label="Breadcrumb" class="flex items-center gap-2 text-sm text-white/85 mb-4"><a href="index.html" class="hover:text-white">Αρχική</a><span aria-hidden="true">/</span><span class="text-white font-semibold" aria-current="page">Θεραπείες</span></nav>
@@ -23,47 +23,61 @@
   <section class="py-16 lg:py-24 bg-mist">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <a href="treatment-speech.html" class="svc-card reveal block rounded-3xl bg-white ring-1 ring-grey/10 shadow-card p-7">
-          <span class="grid place-items-center w-14 h-14 rounded-full bg-green text-white mb-5"><svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4L3 21l1.1-3.9A8.4 8.4 0 1 1 21 11.5Z"/></svg></span>
-          <h3 class="font-display font-bold text-ink text-xl mb-2.5">Λογοθεραπεία</h3>
+        <a href="treatment-speech.html" class="svc-card reveal block rounded-3xl bg-white ring-1 ring-grey/10 shadow-card">
+          <span class="svc-media"><img loading="lazy" decoding="async" src="assets/speech-detail.jpg" alt="Χώρος λογοθεραπείας" /><span class="svc-icon grid place-items-center w-14 h-14 rounded-full bg-green text-white"><svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4L3 21l1.1-3.9A8.4 8.4 0 1 1 21 11.5Z"/></svg></span></span>
+          <div class="svc-body">
+                    <h3 class="font-display font-bold text-ink text-xl mb-2.5">Λογοθεραπεία</h3>
           <p class="text-ink/85 leading-relaxed text-[15px]">Βοηθά το παιδί να κατανοεί και να εκφράζεται, από την άρθρωση και το λεξιλόγιο έως τον κοινωνικό λόγο, ώστε να επικοινωνεί με αυτοπεποίθηση στην καθημερινότητά του.</p>
           <span class="mt-5 inline-flex items-center gap-2 text-grey font-semibold text-sm">Περισσότερα <svg class="arrow w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div>
         </a>
-        <a href="treatment-occupational.html" class="svc-card reveal d1 block rounded-3xl bg-white ring-1 ring-grey/10 shadow-card p-7">
-          <span class="grid place-items-center w-14 h-14 rounded-full bg-red text-white mb-5"><svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-4 0M14 10V4a2 2 0 0 0-4 0v2M10 10.5V6a2 2 0 0 0-4 0v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></svg></span>
-          <h3 class="font-display font-bold text-ink text-xl mb-2.5">Εργοθεραπεία</h3>
+        <a href="treatment-occupational.html" class="svc-card reveal d1 block rounded-3xl bg-white ring-1 ring-grey/10 shadow-card">
+          <span class="svc-media"><img loading="lazy" decoding="async" src="assets/occupational-detail.jpg" alt="Αίθουσα εργοθεραπείας" /><span class="svc-icon grid place-items-center w-14 h-14 rounded-full bg-red text-white"><svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-4 0M14 10V4a2 2 0 0 0-4 0v2M10 10.5V6a2 2 0 0 0-4 0v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></svg></span></span>
+          <div class="svc-body">
+                    <h3 class="font-display font-bold text-ink text-xl mb-2.5">Εργοθεραπεία</h3>
           <p class="text-ink/85 leading-relaxed text-[15px]">Ενισχύει την αδρή και λεπτή κίνηση, τις αισθητηριακές δεξιότητες και την αυτοεξυπηρέτηση, ώστε το παιδί να συμμετέχει με αυτονομία στο παιχνίδι, στο σχολείο και στην καθημερινή ζωή.</p>
           <span class="mt-5 inline-flex items-center gap-2 text-grey font-semibold text-sm">Περισσότερα <svg class="arrow w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div>
         </a>
-        <a href="treatment-special.html" class="svc-card reveal d2 block rounded-3xl bg-white ring-1 ring-grey/10 shadow-card p-7">
-          <span class="grid place-items-center w-14 h-14 rounded-full bg-blue text-white mb-5"><svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7l10-4 10 4-10 4Z"/><path d="M6 9v5c0 1.5 3 3 6 3s6-1.5 6-3V9"/><path d="M22 7v6"/></svg></span>
-          <h3 class="font-display font-bold text-ink text-xl mb-2.5">Ειδική Αγωγή</h3>
+        <a href="treatment-special.html" class="svc-card reveal d2 block rounded-3xl bg-white ring-1 ring-grey/10 shadow-card">
+          <span class="svc-media"><img loading="lazy" decoding="async" src="assets/special-detail.jpg" alt="Αίθουσα ειδικής αγωγής" /><span class="svc-icon grid place-items-center w-14 h-14 rounded-full bg-blue text-white"><svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7l10-4 10 4-10 4Z"/><path d="M6 9v5c0 1.5 3 3 6 3s6-1.5 6-3V9"/><path d="M22 7v6"/></svg></span></span>
+          <div class="svc-body">
+                    <h3 class="font-display font-bold text-ink text-xl mb-2.5">Ειδική Αγωγή</h3>
           <p class="text-ink/85 leading-relaxed text-[15px]">Στηρίζει παιδιά με μαθησιακές δυσκολίες στην οργάνωση της σκέψης, την ανάγνωση, τη γραφή και τα μαθηματικά, με εξατομικευμένους τρόπους μάθησης που χτίζουν αυτοπεποίθηση.</p>
           <span class="mt-5 inline-flex items-center gap-2 text-grey font-semibold text-sm">Περισσότερα <svg class="arrow w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div>
         </a>
-        <a href="treatment-psychotherapy.html" class="svc-card reveal block rounded-3xl bg-white ring-1 ring-grey/10 shadow-card p-7">
-          <span class="grid place-items-center w-14 h-14 rounded-full bg-orange text-white mb-5"><svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.35-7-10a4 4 0 0 1 7-2.65A4 4 0 0 1 19 11c0 5.65-7 10-7 10Z"/></svg></span>
-          <h3 class="font-display font-bold text-ink text-xl mb-2.5">Ψυχοθεραπεία</h3>
+        <a href="treatment-psychotherapy.html" class="svc-card reveal block rounded-3xl bg-white ring-1 ring-grey/10 shadow-card">
+          <span class="svc-media"><img loading="lazy" decoding="async" src="assets/psychotherapy-detail.jpg" alt="Γραφείο ψυχοθεραπείας" /><span class="svc-icon grid place-items-center w-14 h-14 rounded-full bg-orange text-white"><svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.35-7-10a4 4 0 0 1 7-2.65A4 4 0 0 1 19 11c0 5.65-7 10-7 10Z"/></svg></span></span>
+          <div class="svc-body">
+                    <h3 class="font-display font-bold text-ink text-xl mb-2.5">Ψυχοθεραπεία</h3>
           <p class="text-ink/85 leading-relaxed text-[15px]">Δίνει στο παιδί χώρο να αναγνωρίσει και να διαχειριστεί το άγχος, τον θυμό και τα δύσκολα συναισθήματα, ενισχύοντας την αυτοεκτίμηση και τις σχέσεις του με τους άλλους.</p>
           <span class="mt-5 inline-flex items-center gap-2 text-grey font-semibold text-sm">Περισσότερα <svg class="arrow w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div>
         </a>
-        <a href="treatment-consulting.html" class="svc-card reveal d1 block rounded-3xl bg-white ring-1 ring-grey/10 shadow-card p-7">
-          <span class="grid place-items-center w-14 h-14 rounded-full bg-grey text-white mb-5"><svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4L3 21l1.1-3.9A8.4 8.4 0 1 1 21 11.5Z"/><path d="M8 10h8M8 13.5h5"/></svg></span>
-          <h3 class="font-display font-bold text-ink text-xl mb-2.5">Συμβουλευτική</h3>
+        <a href="treatment-consulting.html" class="svc-card reveal d1 block rounded-3xl bg-white ring-1 ring-grey/10 shadow-card">
+          <span class="svc-media"><img loading="lazy" decoding="async" src="assets/consulting-detail.jpg" alt="Χώρος συμβουλευτικής" /><span class="svc-icon grid place-items-center w-14 h-14 rounded-full bg-grey text-white"><svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4L3 21l1.1-3.9A8.4 8.4 0 1 1 21 11.5Z"/><path d="M8 10h8M8 13.5h5"/></svg></span></span>
+          <div class="svc-body">
+                    <h3 class="font-display font-bold text-ink text-xl mb-2.5">Συμβουλευτική</h3>
           <p class="text-ink/85 leading-relaxed text-[15px]">Δίπλα στον γονιό: με την καθοδήγηση εξειδικευμένων ψυχολόγων, κατανοείτε τις ανάγκες του παιδιού σας και αποκτάτε πρακτικά εργαλεία για τις δύσκολες στιγμές της καθημερινότητας.</p>
           <span class="mt-5 inline-flex items-center gap-2 text-grey font-semibold text-sm">Περισσότερα <svg class="arrow w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div>
         </a>
-        <a href="treatment-play.html" class="svc-card reveal d2 block rounded-3xl bg-white ring-1 ring-grey/10 shadow-card p-7">
-          <span class="grid place-items-center w-14 h-14 rounded-full bg-orange text-white mb-5"><svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 14.5s1.5 2 4 2 4-2 4-2"/><path d="M9 10h.01M15 10h.01"/></svg></span>
-          <h3 class="font-display font-bold text-ink text-xl mb-2.5">Παιγνιοθεραπεία</h3>
+        <a href="treatment-play.html" class="svc-card reveal d2 block rounded-3xl bg-white ring-1 ring-grey/10 shadow-card">
+          <span class="svc-media"><img loading="lazy" decoding="async" src="assets/play-room.jpg" alt="Χώρος παιγνιοθεραπείας" /><span class="svc-icon grid place-items-center w-14 h-14 rounded-full bg-orange text-white"><svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 14.5s1.5 2 4 2 4-2 4-2"/><path d="M9 10h.01M15 10h.01"/></svg></span></span>
+          <div class="svc-body">
+                    <h3 class="font-display font-bold text-ink text-xl mb-2.5">Παιγνιοθεραπεία</h3>
           <p class="text-ink/85 leading-relaxed text-[15px]">Η παιγνιοθεραπεία αξιοποιεί το παιχνίδι ως φυσικό μέσο έκφρασης, βοηθώντας τα παιδιά να επεξεργαστούν συναισθήματα και εμπειρίες και να αναπτύξουν τις δεξιότητές τους σε ένα ασφαλές περιβάλλον.</p>
           <span class="mt-5 inline-flex items-center gap-2 text-grey font-semibold text-sm">Περισσότερα <svg class="arrow w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div>
         </a>
-        <a href="treatment-social.html" class="svc-card reveal d3 lg:col-start-2 block rounded-3xl bg-white ring-1 ring-grey/10 shadow-card p-7">
-          <span class="grid place-items-center w-14 h-14 rounded-full bg-green text-white mb-5"><svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M2 20v-1a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5v1"/><path d="M16.5 14a4 4 0 0 1 4 4v2"/></svg></span>
-          <h3 class="font-display font-bold text-ink text-xl mb-2.5">Ομάδες Κοινωνικών Δεξιοτήτων</h3>
+        <a href="treatment-social.html" class="svc-card reveal d3 lg:col-start-2 block rounded-3xl bg-white ring-1 ring-grey/10 shadow-card">
+          <span class="svc-media"><img loading="lazy" decoding="async" src="assets/social-detail.jpg" alt="Αίθουσα ομάδων κοινωνικών δεξιοτήτων" /><span class="svc-icon grid place-items-center w-14 h-14 rounded-full bg-green text-white"><svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M2 20v-1a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5v1"/><path d="M16.5 14a4 4 0 0 1 4 4v2"/></svg></span></span>
+          <div class="svc-body">
+                    <h3 class="font-display font-bold text-ink text-xl mb-2.5">Ομάδες Κοινωνικών Δεξιοτήτων</h3>
           <p class="text-ink/85 leading-relaxed text-[15px]">Μέσα στην ομάδα, με συνομηλίκους, το παιδί εξασκεί την επικοινωνία, τη συνεργασία και την ενσυναίσθηση: δεξιότητες που μεταφέρονται στο σχολείο, στο παιχνίδι και στις φιλίες του.</p>
           <span class="mt-5 inline-flex items-center gap-2 text-grey font-semibold text-sm">Περισσότερα <svg class="arrow w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div>
         </a>
       </div>
     </div>

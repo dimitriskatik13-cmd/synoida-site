@@ -1,9 +1,10 @@
 <main>
   <!-- PHOTO HERO -->
-  <section class="relative">
+  <section class="relative hero-depth">
     <div class="relative min-h-[560px] lg:min-h-[640px] flex items-center overflow-hidden">
-      <img fetchpriority="high" src="assets/hero-room.jpg" alt="Φωτεινός χώρος θεραπείας για παιδιά στη ΣΥΝΟΙΔΑ" class="absolute inset-0 w-full h-full object-cover" />
+      <div class="hero-plane"><img fetchpriority="high" src="assets/hero-room.jpg" alt="Φωτεινός χώρος θεραπείας για παιδιά στη ΣΥΝΟΙΔΑ" /></div>
       <div class="absolute inset-0 hero-scrim"></div>
+      <div class="hero-orbs" aria-hidden="true"><span class="orb orb-g"></span><span class="orb orb-r"></span><span class="orb orb-b"></span><span class="orb orb-o"></span></div>
       <div class="reveal relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full pb-24 pt-12">
         <div class="max-w-2xl">
           <p class="kicker text-white/80 text-xs mb-3">Κέντρα Ειδικών Θεραπειών</p>
@@ -59,7 +60,7 @@
       </div>
       <div class="reveal d1">
         <p class="kicker text-green text-xs mb-3">Σχετικά με μας</p>
-        <h2 class="font-display font-bold text-ink text-3xl sm:text-4xl leading-tight">29 χρόνια <span class="text-green">δίπλα στο παιδί!</span></h2>
+        <h2 class="font-display font-bold text-ink text-3xl sm:text-4xl leading-tight"><span data-count="29">29</span> χρόνια <span class="text-green">δίπλα στο παιδί!</span></h2>
         <div class="prose-syn mt-5 text-[16px] text-ink/85">
           <p>Η φιλοσοφία μας ήταν ανέκαθεν να βρισκόμαστε δίπλα στην οικογένεια, να αφουγκραζόμαστε τις ανάγκες της και να παρέχουμε τη βοήθειά μας με επιστημονικότητα και ενσυναίσθηση.</p>
         </div>
@@ -90,14 +91,15 @@
   </section>
 
   <!-- SERVICES PREVIEW -->
-  <section class="py-16 lg:py-24 bg-white">
+  <section class="svc-pin bg-white">
+    <div class="svc-stage py-16 lg:py-24">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="reveal max-w-3xl mx-auto text-center">
+      <div class="reveal svc-intro">
         <p class="kicker text-green text-xs mb-3">Θεραπείες</p>
         <h2 class="font-display font-bold text-ink text-3xl sm:text-4xl leading-tight">Για κάθε παιδί σχεδιάζουμε ένα <span class="text-green">εξατομικευμένο πρόγραμμα παρέμβασης.</span></h2>
         <p class="mt-5 text-[16px] text-ink/85">Λογοθεραπευτές, εργοθεραπευτές, ψυχολόγοι και ειδικοί παιδαγωγοί: μια έμπειρη διεπιστημονική ομάδα, γύρω από τις ανάγκες του δικού σας παιδιού.</p>
       </div>
-      <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="svc-rail mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         <a href="treatment-speech.html" class="svc-card reveal block rounded-3xl bg-white ring-1 ring-grey/10 shadow-card p-7">
           <span class="grid place-items-center w-14 h-14 rounded-full bg-green text-white mb-5"><svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4L3 21l1.1-3.9A8.4 8.4 0 1 1 21 11.5Z"/></svg></span>
           <h3 class="font-display font-bold text-ink text-xl mb-2.5">Λογοθεραπεία</h3>
@@ -136,12 +138,13 @@
         </a>
       </div>
     </div>
+    </div>
   </section>
 
   <!-- CTA BAND -->
   <section class="relative bg-mist overflow-hidden">
-    <div class="pointer-events-none absolute -top-20 -right-16 w-80 h-80 rounded-full bg-green/10 blur-2xl"></div>
     <div class="pointer-events-none absolute -bottom-20 -left-16 w-80 h-80 rounded-full bg-blue/10 blur-2xl"></div>
+    <div class="cta-orbs" aria-hidden="true"><span class="orb orb-g"></span><span class="orb orb-r"></span><span class="orb orb-b"></span><span class="orb orb-o"></span></div>
     <div class="reveal relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20 text-center">
       <h2 class="font-display font-bold text-ink text-3xl sm:text-4xl leading-tight">Έχετε ερωτήσεις ή ανησυχίες <span class="text-green">για το παιδί σας;</span></h2>
       <p class="mt-4 text-[17px] text-ink/85">Είμαστε εδώ για να σας ακούσουμε.</p>

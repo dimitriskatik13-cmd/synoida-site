@@ -73,6 +73,38 @@
     .d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}
 
     @media (prefers-reduced-motion: reduce){ .reveal{opacity:1;transform:none;transition:none} html{scroll-behavior:auto} }
+
+    /* ---- depth & motion (homepage): hero planes, brand balloons, pinned therapies rail, count-up ---- */
+    .hero-plane { position:absolute; inset:-14% 0; will-change:transform; }
+    .hero-plane img { width:100%; height:100%; object-fit:cover; object-position:50% 45%; }
+    .orb { position:absolute; border-radius:9999px; pointer-events:none;
+      background-image: radial-gradient(circle at 34% 28%, rgba(255,255,255,.42), rgba(255,255,255,0) 48%); }
+    .hero-orbs { position:absolute; inset:0; pointer-events:none; will-change:transform; }
+    .hero-orbs .orb { opacity:.9; box-shadow:0 18px 50px rgba(0,0,0,.16); }
+    .hero-orbs .orb-g { width:clamp(4.5rem,11vw,10rem); height:clamp(4.5rem,11vw,10rem); right:12%; top:14%; background-color:#8DC63F; }
+    .hero-orbs .orb-r { width:clamp(3.75rem,9vw,8.25rem); height:clamp(3.75rem,9vw,8.25rem); right:4%; top:50%; background-color:#ED1C24; }
+    .hero-orbs .orb-b { width:clamp(3rem,7.5vw,7rem); height:clamp(3rem,7.5vw,7rem); right:22%; top:62%; background-color:#00AEEF; }
+    .hero-orbs .orb-o { width:clamp(1.9rem,4.5vw,4.25rem); height:clamp(1.9rem,4.5vw,4.25rem); right:29%; top:33%; background-color:#F7941D; }
+    @media (max-width:639px){ .hero-orbs .orb{opacity:.85} .hero-orbs .orb-g{width:20vw;height:20vw;right:5%;top:3%} .hero-orbs .orb-r{width:16vw;height:16vw;right:-6%;top:19%} .hero-orbs .orb-b{width:12vw;height:12vw;right:30%;top:5%} .hero-orbs .orb-o{width:8vw;height:8vw;right:58%;top:5%} }
+    /* balloons that gather into the mark while the CTA band scrolls in (--k: 1 scattered, 0 assembled) */
+    .cta-orbs { --k:0; position:absolute; right:clamp(1rem,6vw,7rem); top:50%; width:clamp(11rem,22vw,17rem); aspect-ratio:1; translate:0 -50%; pointer-events:none; opacity:.28; }
+    .cta-orbs .orb { transform: translate(calc(var(--dx) * var(--k)), calc(var(--dy) * var(--k))); will-change:transform; }
+    .cta-orbs .orb-g { width:40%; height:40%; left:52%; top:6%;  background-color:#8DC63F; --dx:18vw;  --dy:-30vh; }
+    .cta-orbs .orb-r { width:46%; height:46%; left:46%; top:44%; background-color:#ED1C24; --dx:24vw;  --dy:22vh; }
+    .cta-orbs .orb-b { width:44%; height:44%; left:4%;  top:50%; background-color:#00AEEF; --dx:-22vw; --dy:26vh; }
+    .cta-orbs .orb-o { width:20%; height:20%; left:30%; top:22%; background-color:#F7941D; --dx:-16vw; --dy:-24vh; }
+    @media (max-width:1023px){ .cta-orbs { opacity:.16; right:-3rem; } }
+    /* therapies: normal grid everywhere; on wide screens without reduced-motion it becomes a pinned horizontal rail */
+    .svc-intro { max-width:48rem; margin-inline:auto; text-align:center; }
+    @media (min-width:1024px) and (prefers-reduced-motion: no-preference){
+      .js .svc-pin { position:relative; }
+      .js .svc-stage { position:sticky; top:var(--hdr,72px); height:calc(100vh - var(--hdr,72px)); display:flex; flex-direction:column; justify-content:center; overflow:hidden; padding-block:0.5rem; }
+      .js .svc-rail { margin-top:1.5rem; }
+      .js .svc-intro h2 { font-size:2rem; }
+      .js .svc-intro { margin-inline:0; text-align:left; max-width:44rem; }
+      .js .svc-rail { display:flex; gap:1.5rem; width:max-content; will-change:transform; padding-right:8vw; }
+      .js .svc-rail > a { width:22rem; flex:0 0 auto; }
+    }
   </style>
 </head>
 
@@ -325,6 +357,40 @@
     else { var io=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12,rootMargin:'0px 0px -7% 0px'});
       els.forEach(function(e){io.observe(e);});
       window.addEventListener('load',function(){els.forEach(function(e){if(e.getBoundingClientRect().top<window.innerHeight){e.classList.add('in');}});}); }
+
+    /* depth & motion: hero planes, pinned therapies rail, CTA balloons, count-up. All no-ops when the hooks are absent. */
+    (function(){
+      var hero=document.querySelector('.hero-depth'), plane=hero&&hero.querySelector('.hero-plane'), orbs=hero&&hero.querySelector('.hero-orbs');
+      var pin=document.querySelector('.svc-pin'), stage=pin&&pin.querySelector('.svc-stage'), rail=pin&&pin.querySelector('.svc-rail');
+      var cta=document.querySelector('.cta-orbs'), hdr=document.querySelector('header');
+      var railMQ=window.matchMedia('(min-width:1024px)'), over=0, pinStart=0, ticking=false;
+      function railOn(){ return !!(pin&&rail&&railMQ.matches&&!reduce); }
+      function measure(){
+        var hh=hdr?hdr.offsetHeight:72; document.documentElement.style.setProperty('--hdr',hh+'px');
+        if(!pin||!rail) return;
+        if(railOn()){ rail.style.transform='none'; pin.style.height='';
+          var r=rail.getBoundingClientRect(); over=Math.max(0,Math.round(r.left+rail.scrollWidth-window.innerWidth+40));
+          pin.style.height=(stage.offsetHeight+over)+'px'; pinStart=pin.getBoundingClientRect().top+window.scrollY-hh; }
+        else { pin.style.height=''; rail.style.transform=''; over=0; }
+      }
+      function frame(){ ticking=false; var y=window.scrollY, vh=window.innerHeight;
+        if(hero&&!reduce){ var h=hero.offsetHeight||1, p=Math.min(Math.max(y/h,0),1);
+          if(plane) plane.style.transform='translate3d(0,'+(p*h*0.22).toFixed(1)+'px,0)';
+          if(orbs) orbs.style.transform='translate3d(0,'+(-p*h*0.16).toFixed(1)+'px,0)'; }
+        if(railOn()&&over>0){ var t=Math.min(Math.max((y-pinStart)/over,0),1); rail.style.transform='translate3d('+(-t*over).toFixed(1)+'px,0,0)'; }
+        if(cta&&!reduce){ var cr=cta.getBoundingClientRect(), k=Math.min(Math.max((cr.top-vh*0.08)/(vh*0.72),0),1); cta.style.setProperty('--k',k.toFixed(3)); }
+      }
+      function onScroll(){ if(!ticking){ ticking=true; requestAnimationFrame(frame); } }
+      if(hero||pin||cta){ window.addEventListener('scroll',onScroll,{passive:true}); window.addEventListener('resize',function(){measure();frame();});
+        window.addEventListener('load',function(){measure();frame();}); measure(); frame(); }
+      var counters=document.querySelectorAll('[data-count]');
+      if(counters.length&&!reduce&&'IntersectionObserver' in window){
+        var cio=new IntersectionObserver(function(en){ en.forEach(function(e){ if(!e.isIntersecting) return; cio.unobserve(e.target);
+          var el=e.target, to=parseInt(el.getAttribute('data-count'),10)||0, t0=null, dur=1300;
+          function step(ts){ if(t0===null) t0=ts; var q=Math.min((ts-t0)/dur,1); q=1-Math.pow(1-q,3); el.textContent=String(Math.round(to*q)); if(q<1) requestAnimationFrame(step); }
+          requestAnimationFrame(step); }); },{threshold:.5});
+        counters.forEach(function(c){ c.textContent='0'; cio.observe(c); }); }
+    })();
   </script>
 </body>
 </html>

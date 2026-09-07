@@ -102,7 +102,10 @@
     @media (prefers-reduced-motion: reduce){ [data-progress] { --p:1 !important; } .js .reveal.wipe-l > .wipe-box, .js .reveal.wipe-r > .wipe-box { clip-path:none !important; } }
     /* ---- depth & motion (homepage): hero camera move, pinned therapies rail, count-up, logo that assembles ---- */
     .hero-plane { position:absolute; inset:-10% 0; will-change:transform; transform-origin:50% 60%; }
-    .hero-plane img { width:100%; height:100%; object-fit:cover; object-position:50% 45%; }
+    .hero-plane img, .hero-fg img { width:100%; height:100%; object-fit:cover; object-position:50% 45%; }
+    /* layered hero: the wrapper carries the camera scale, the room and the cut-out foreground move at different rates */
+    .hero-planes { position:absolute; inset:-10% 0; will-change:transform; transform-origin:50% 60%; }
+    .hero-planes .hero-plane, .hero-fg { position:absolute; inset:0; will-change:transform; pointer-events:none; }
     /* the mark assembles itself while the CTA band scrolls in (--k: 1 scattered, 0 assembled) */
     .cta-mark { --k:0; position:relative; width:clamp(9rem,40vw,12rem); aspect-ratio:420/279; margin:3rem auto -2rem; pointer-events:none; }
     .cta-mark .orb { transform: translate(calc(var(--dx) * var(--k)), calc(var(--dy) * var(--k))) scale(calc(1 + var(--k) * 1.6)); will-change:transform;
@@ -322,7 +325,7 @@
 
     /* depth & motion: hero planes, pinned therapies rail, CTA balloons, count-up. All no-ops when the hooks are absent. */
     (function(){
-      var hero=document.querySelector('.hero-depth'), plane=hero&&hero.querySelector('.hero-plane');
+      var hero=document.querySelector('.hero-depth'), plane=hero&&hero.querySelector('.hero-plane'), planes=hero&&hero.querySelector('.hero-planes'), fg=hero&&hero.querySelector('.hero-fg');
       var pin=document.querySelector('.svc-pin'), stage=pin&&pin.querySelector('.svc-stage'), rail=pin&&pin.querySelector('.svc-rail');
       var cta=document.querySelector('.cta-mark'), hdr=document.querySelector('header');
       var progs=Array.prototype.slice.call(document.querySelectorAll('[data-progress]'));
@@ -338,7 +341,10 @@
       }
       function frame(){ ticking=false; var y=window.scrollY, vh=window.innerHeight;
         if(hero&&!reduce){ var h=hero.offsetHeight||1, p=Math.min(Math.max(y/h,0),1);
-          if(plane) plane.style.transform='translate3d(0,'+(p*h*0.24).toFixed(1)+'px,0) scale('+(1+p*0.12).toFixed(4)+')'; }
+          if(planes){ planes.style.transform='scale('+(1+p*0.12).toFixed(4)+')';
+            if(plane) plane.style.transform='translate3d(0,'+(p*h*0.16).toFixed(1)+'px,0)';
+            if(fg) fg.style.transform='translate3d(0,'+(-p*h*0.06).toFixed(1)+'px,0)'; }
+          else if(plane) plane.style.transform='translate3d(0,'+(p*h*0.24).toFixed(1)+'px,0) scale('+(1+p*0.12).toFixed(4)+')'; }
         if(railOn()&&over>0){ var t=Math.min(Math.max((y-pinStart)/over,0),1); rail.style.transform='translate3d('+(-t*over).toFixed(1)+'px,0,0)'; }
         if(cta&&!reduce){ var cr=cta.getBoundingClientRect(), k=Math.min(Math.max((cr.top-vh*0.16)/(vh*0.74),0),1); cta.style.setProperty('--k',k.toFixed(3)); }
         if(!reduce) for(var i=0;i<progs.length;i++){ var el=progs[i], rr=el.getBoundingClientRect(), sp=(el.getAttribute('data-progress')||'').split(/\s+/),

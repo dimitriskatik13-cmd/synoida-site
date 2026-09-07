@@ -56,7 +56,7 @@ for outfile, (title, desc, page) in PAGES.items():
     main = main.replace('<main>', '<main id="main">', 1)   # στόχος του skip link
     url = BASE_URL if outfile == 'index.html' else BASE_URL + outfile
     m = re.search(r'<img[^>]+src="(assets/[^"]+)"', main)
-    ogimg = BASE_URL + (m.group(1) if m else DEFAULT_OG)
+    ogimg = BASE_URL + (m.group(1).replace('-bg.jpg', '.jpg') if m else DEFAULT_OG)   # layered hero: share the untouched photo
     out = (TEMPLATE
            .replace('{{TITLE}}', title)
            .replace('{{DESC}}', desc)

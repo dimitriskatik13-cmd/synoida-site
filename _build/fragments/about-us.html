@@ -1,7 +1,7 @@
 <main>
-  <section class="relative">
+  <section class="relative hero-depth">
     <div class="relative min-h-[360px] lg:min-h-[440px] flex items-end overflow-hidden">
-      <img fetchpriority="high" src="assets/about-storefront.jpg" alt="Ο χώρος υποδοχής του κέντρου ειδικών θεραπειών ΣΥΝΟΙΔΑ" class="absolute inset-0 w-full h-full object-cover" />
+      <div class="hero-plane"><img fetchpriority="high" src="assets/about-storefront.jpg" alt="Ο χώρος υποδοχής του κέντρου ειδικών θεραπειών ΣΥΝΟΙΔΑ" /></div>
       <div class="absolute inset-0 hero-scrim-b"></div>
       <div class="reveal relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full pb-12 pt-28">
         <nav aria-label="Breadcrumb" class="flex items-center gap-2 text-sm text-white/85 mb-4"><a href="index.html" class="hover:text-white">Αρχική</a><span aria-hidden="true">/</span><span class="text-white font-semibold" aria-current="page">Σχετικά με μας</span></nav>
@@ -13,7 +13,7 @@
 
   <section class="py-16 lg:py-24 bg-white">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-[1.4fr_1fr] gap-12 lg:gap-16 items-center">
-      <div class="reveal relative">
+      <div class="reveal wipe-l relative">
         <div class="absolute -inset-4 -z-10 rounded-[2.5rem] bg-green/10"></div>
         <img loading="lazy" decoding="async" src="assets/about-history.jpg" alt="Στιγμιότυπο από τη διαδρομή της ΣΥΝΟΙΔΑ στην Ειδική Αγωγή" class="frame shadow-card w-full object-cover aspect-square" />
       </div>
@@ -23,6 +23,14 @@
         <div class="prose-syn mt-5 text-[16px] text-ink/85">
           <p>Στα νερά της Ειδικής Αγωγής με συμπλέοντες τα παιδιά και τους γονείς τους. Αρχικά, το 1998 στα Σπάτα και στη συνέχεια, το 2010 στην Αρτέμιδα και το 2018, στη Νέα Μάκρη και τον Μαραθώνα, δημιουργήσαμε χώρους φιλικούς προς τα παιδιά ώστε να αναδύονται οι δεξιότητές τους μέσα από το παιχνίδι και να εξελίσσονται μέσα από την εξειδικευμένη προσέγγιση που αντιστοιχεί στις ανάγκες τους.</p>
           <p>Η φιλοσοφία μας ήταν ανέκαθεν να βρισκόμαστε δίπλα στην οικογένεια, να αφουγκραζόμαστε τις ανάγκες της και να παρέχουμε τη βοήθειά μας με επιστημονικότητα και ενσυναίσθηση.</p>
+        </div>
+        <div class="tl" data-progress="0.85 0.55" aria-label="Χρονολόγιο">
+          <div class="tl-line" aria-hidden="true"></div>
+          <div class="tl-items">
+            <div class="tl-item" style="--at:0.08"><div class="tl-year">1998</div><div class="tl-place">Σπάτα</div></div>
+            <div class="tl-item" style="--at:0.5"><div class="tl-year">2010</div><div class="tl-place">Αρτέμιδα</div></div>
+            <div class="tl-item" style="--at:0.92"><div class="tl-year">2018</div><div class="tl-place">Νέα Μάκρη &amp; Μαραθώνας</div></div>
+          </div>
         </div>
         <div class="mt-8">
           <a href="treatments.html" class="inline-flex items-center gap-2 rounded-full bg-grey px-7 py-3.5 text-white font-semibold shadow-soft hover:bg-grey/90 transition">Οι θεραπείες μας <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
@@ -36,44 +44,44 @@
       <p class="kicker text-green text-xs mb-3">Ο τρόπος λειτουργίας μας</p>
       <h2 class="font-display font-bold text-ink text-3xl sm:text-4xl leading-tight">Πώς <span class="text-green">ξεκινάμε</span></h2>
       <p class="mt-5 text-[16px] text-ink/85">Από την πρώτη συνάντηση μέχρι την αναφορά προόδου, η διαδρομή είναι ξεκάθαρη από την αρχή:</p>
-      <ol class="mt-8 space-y-7">
+      <ol class="mt-8 space-y-7 steps-draw" data-progress="0.8 0.55"><div class="steps-line" aria-hidden="true"></div>
         <li class="flex items-start gap-5">
-          <span class="grid place-items-center w-11 h-11 shrink-0 rounded-full bg-green text-grey font-display font-bold text-lg">1</span>
+          <span class="step-num grid place-items-center w-11 h-11 shrink-0 rounded-full bg-green text-grey font-display font-bold text-lg" data-at>1</span>
           <div>
             <p class="font-display font-bold text-ink text-lg leading-snug">Πρώτη συνάντηση με τον γονέα</p>
             <p class="mt-1.5 text-[16px] leading-[1.75] text-ink/85">Συζητάμε το αίτημά σας και σας κατευθύνουμε ανάλογα.</p>
           </div>
         </li>
         <li class="flex items-start gap-5">
-          <span class="grid place-items-center w-11 h-11 shrink-0 rounded-full bg-green text-grey font-display font-bold text-lg">2</span>
+          <span class="step-num grid place-items-center w-11 h-11 shrink-0 rounded-full bg-green text-grey font-display font-bold text-lg" data-at>2</span>
           <div>
             <p class="font-display font-bold text-ink text-lg leading-snug">Αξιολόγηση του παιδιού</p>
             <p class="mt-1.5 text-[16px] leading-[1.75] text-ink/85">Με τυπικά και άτυπα μέσα αξιολόγησης. Συμπληρώνεται το ιστορικό.</p>
           </div>
         </li>
         <li class="flex items-start gap-5">
-          <span class="grid place-items-center w-11 h-11 shrink-0 rounded-full bg-green text-grey font-display font-bold text-lg">3</span>
+          <span class="step-num grid place-items-center w-11 h-11 shrink-0 rounded-full bg-green text-grey font-display font-bold text-lg" data-at>3</span>
           <div>
             <p class="font-display font-bold text-ink text-lg leading-snug">Εξατομικευμένο πρόγραμμα</p>
             <p class="mt-1.5 text-[16px] leading-[1.75] text-ink/85">Προτείνεται πρόγραμμα παρέμβασης που συμβαδίζει με τις ανάγκες του παιδιού, υπογράφεται το θεραπευτικό συμβόλαιο και επιλέγεται ο κατάλληλος θεραπευτής.</p>
           </div>
         </li>
         <li class="flex items-start gap-5">
-          <span class="grid place-items-center w-11 h-11 shrink-0 rounded-full bg-green text-grey font-display font-bold text-lg">4</span>
+          <span class="step-num grid place-items-center w-11 h-11 shrink-0 rounded-full bg-green text-grey font-display font-bold text-lg" data-at>4</span>
           <div>
             <p class="font-display font-bold text-ink text-lg leading-snug">Έναρξη των συνεδριών</p>
             <p class="mt-1.5 text-[16px] leading-[1.75] text-ink/85">Ξεκινά το πρόγραμμα. Κάθε συνεδρία διαρκεί 45 λεπτά.</p>
           </div>
         </li>
         <li class="flex items-start gap-5">
-          <span class="grid place-items-center w-11 h-11 shrink-0 rounded-full bg-green text-grey font-display font-bold text-lg">5</span>
+          <span class="step-num grid place-items-center w-11 h-11 shrink-0 rounded-full bg-green text-grey font-display font-bold text-lg" data-at>5</span>
           <div>
             <p class="font-display font-bold text-ink text-lg leading-snug">Ενημέρωση μετά από κάθε συνεδρία</p>
             <p class="mt-1.5 text-[16px] leading-[1.75] text-ink/85">Ενημερώνεστε για την έκβαση της συνεδρίας και λαμβάνετε υλικό ή συγκεκριμένες οδηγίες για το σπίτι, ώστε να δουλεύετε μαζί με το παιδί, καθώς και αναλυτικό φυλλάδιο με τη στοχοθεσία της συνεδρίας.</p>
           </div>
         </li>
         <li class="flex items-start gap-5">
-          <span class="grid place-items-center w-11 h-11 shrink-0 rounded-full bg-green text-grey font-display font-bold text-lg">6</span>
+          <span class="step-num grid place-items-center w-11 h-11 shrink-0 rounded-full bg-green text-grey font-display font-bold text-lg" data-at>6</span>
           <div>
             <p class="font-display font-bold text-ink text-lg leading-snug">Γραπτή αναφορά προόδου κάθε 6 μήνες</p>
             <p class="mt-1.5 text-[16px] leading-[1.75] text-ink/85">Παράλληλα, η διεπιστημονική μας ομάδα συνεδριάζει κάθε μήνα για την εξέλιξη κάθε παιδιού: οι θεραπευτές συζητούν τις δυσκολίες που προκύπτουν και αναζητούν λύσεις σε συνεργασία με τις υπόλοιπες ειδικότητες.</p>
@@ -85,7 +93,7 @@
 
   <section class="py-16 lg:py-24 bg-white">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-[1fr_1.4fr] gap-12 lg:gap-16 items-center">
-      <div class="reveal relative lg:order-last">
+      <div class="reveal wipe-r relative lg:order-last">
         <div class="absolute -inset-4 -z-10 rounded-[2.5rem] bg-green/10"></div>
         <img loading="lazy" decoding="async" src="assets/about-team.jpg" alt="Η ομάδα της ΣΥΝΟΙΔΑ σε χώρο αξιολόγησης" class="frame shadow-card w-full object-cover aspect-square" />
       </div>
@@ -105,11 +113,11 @@
     </div>
     <div class="reveal d1 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-10">
       <div class="grid grid-cols-2 sm:grid-cols-5 gap-6 sm:gap-8">
-        <div class="reveal"><div class="font-display font-bold text-green text-4xl sm:text-5xl leading-none">9</div><div class="text-ink/85 text-sm mt-2 leading-snug">λογοθεραπευτές</div></div>
-        <div class="reveal"><div class="font-display font-bold text-red text-4xl sm:text-5xl leading-none">4</div><div class="text-ink/85 text-sm mt-2 leading-snug">ψυχολόγοι</div></div>
-        <div class="reveal"><div class="font-display font-bold text-blue text-4xl sm:text-5xl leading-none">5</div><div class="text-ink/85 text-sm mt-2 leading-snug">εργοθεραπευτές</div></div>
-        <div class="reveal"><div class="font-display font-bold text-orange text-4xl sm:text-5xl leading-none">2</div><div class="text-ink/85 text-sm mt-2 leading-snug">βοηθοί εργοθεραπείας</div></div>
-        <div class="reveal"><div class="font-display font-bold text-grey text-4xl sm:text-5xl leading-none">2</div><div class="text-ink/85 text-sm mt-2 leading-snug">ειδικοί παιδαγωγοί</div></div>
+        <div class="reveal"><div class="font-display font-bold text-green text-4xl sm:text-5xl leading-none" data-count="9" data-count-ms="1800">9</div><div class="text-ink/85 text-sm mt-2 leading-snug">λογοθεραπευτές</div></div>
+        <div class="reveal"><div class="font-display font-bold text-red text-4xl sm:text-5xl leading-none" data-count="4" data-count-ms="1800">4</div><div class="text-ink/85 text-sm mt-2 leading-snug">ψυχολόγοι</div></div>
+        <div class="reveal"><div class="font-display font-bold text-blue text-4xl sm:text-5xl leading-none" data-count="5" data-count-ms="1800">5</div><div class="text-ink/85 text-sm mt-2 leading-snug">εργοθεραπευτές</div></div>
+        <div class="reveal"><div class="font-display font-bold text-orange text-4xl sm:text-5xl leading-none" data-count="2" data-count-ms="1800">2</div><div class="text-ink/85 text-sm mt-2 leading-snug">βοηθοί εργοθεραπείας</div></div>
+        <div class="reveal"><div class="font-display font-bold text-grey text-4xl sm:text-5xl leading-none" data-count="2" data-count-ms="1800">2</div><div class="text-ink/85 text-sm mt-2 leading-snug">ειδικοί παιδαγωγοί</div></div>
       </div>
     </div>
   </section>

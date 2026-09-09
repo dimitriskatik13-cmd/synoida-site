@@ -94,7 +94,7 @@
     .mosaic { position:relative; aspect-ratio:1; overflow:hidden; border-radius:28px; display:grid; grid-template-columns:repeat(3,1fr); grid-template-rows:repeat(2,1fr); }
     .mosaic .tile { position:relative; background-image:var(--img); background-size:auto 200%; background-position: calc(21.43% + var(--x) * 28.57%) calc(var(--y) * 100%);   /* 3:2 photo, centre-cropped to the square like object-fit: cover */ will-change:transform,opacity;
       --fi: clamp(0, calc((var(--p,1) - var(--d,0)) / 0.42), 1); }
-    .js .mosaic .tile { transform: translate3d(calc((1 - var(--fi)) * var(--dx)), calc((1 - var(--fi)) * var(--dy)), 0) scale(calc(0.9 + var(--fi) * 0.1)); opacity: calc(0.08 + var(--fi) * 0.92); }
+    .js .mosaic .tile { transform: translate3d(calc((1 - var(--fi)) * var(--dx)), calc((1 - var(--fi)) * var(--dy)), 0) scale(calc(0.9 + var(--fi) * 0.106)); opacity: calc(0.08 + var(--fi) * 0.92); }   /* ends at 1.006 so the pieces overlap by a hair: no seams */
     .mosaic .tile.chip::after { content:""; position:absolute; inset:0; background:var(--chip,#F7941D); opacity: clamp(0, calc(1 - var(--fi) * 1.25), 1); }
     .steps-draw { position:relative; }
     .steps-draw .step-num { position:relative; z-index:0; background:#fff; box-shadow: inset 0 0 0 2px #8DC63F; overflow:hidden; }
